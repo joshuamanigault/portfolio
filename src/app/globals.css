@@ -1,0 +1,156 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Color palette - preserving the original grayscale + lightblue accent */
+  --color-background: #eeeeee;
+  --color-foreground: #02020a;
+  --color-muted: #676767;
+  --color-muted-foreground: #343434;
+  --color-border: #c4c4c4;
+  --color-card: #f5f5f5;
+  --color-card-foreground: #555555;
+  --color-accent: #a8d8ea;
+  --color-accent-foreground: #02020a;
+  --color-surface: #dadada;
+  --color-input-border: #cccccc;
+  --color-nav-inactive: #b3b3b3;
+
+  /* Dark mode colors */
+  --color-dark-background: #0a0a0f;
+  --color-dark-foreground: #e8e8ed;
+  --color-dark-muted: #8a8a95;
+  --color-dark-muted-foreground: #b8b8c2;
+  --color-dark-border: #2a2a35;
+  --color-dark-card: #14141f;
+  --color-dark-card-foreground: #a0a0ab;
+  --color-dark-accent: #5ba3c9;
+  --color-dark-accent-foreground: #e8e8ed;
+  --color-dark-surface: #1a1a25;
+  --color-dark-input-border: #3a3a45;
+  --color-dark-nav-inactive: #5a5a65;
+
+  /* Typography scale - uses next/font CSS variable */
+  --font-sans: var(--font-poppins), "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  /* Spacing tokens */
+  --container-max: 850px;
+  --container-wide: 940px;
+
+  /* Animations */
+  --animate-slide-in: slide-in 0.6s ease-out forwards;
+  --animate-slide-up: slide-up 0.5s ease-out forwards;
+  --animate-fade-in: fade-in 0.8s ease-out forwards;
+  --animate-typing: typing 3s steps(30, end) forwards;
+  --animate-blink: blink-caret 0.75s step-end infinite;
+  --animate-tilt: tilt 6s alternate infinite;
+
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: currentColor;
+    }
+  }
+
+  @keyframes tilt {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-2deg);
+    }
+    50% {
+      transform: rotate(2deg);
+    }
+    75% {
+      transform: rotate(-1deg);
+    }
+  }
+}
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .container-main {
+    @apply mx-auto w-full max-w-[850px] px-5;
+  }
+
+  .container-wide {
+    @apply mx-auto w-full max-w-[940px] px-5;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Dark mode overrides via CSS custom properties */
+.dark {
+  --color-background: var(--color-dark-background);
+  --color-foreground: var(--color-dark-foreground);
+  --color-muted: var(--color-dark-muted);
+  --color-muted-foreground: var(--color-dark-muted-foreground);
+  --color-border: var(--color-dark-border);
+  --color-card: var(--color-dark-card);
+  --color-card-foreground: var(--color-dark-card-foreground);
+  --color-accent: var(--color-dark-accent);
+  --color-accent-foreground: var(--color-dark-accent-foreground);
+  --color-surface: var(--color-dark-surface);
+  --color-input-border: var(--color-dark-input-border);
+  --color-nav-inactive: var(--color-dark-nav-inactive);
+}

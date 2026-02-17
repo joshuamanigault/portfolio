@@ -1,0 +1,123 @@
+---
+
+title: ASU ProfessorView
+description: Chrome extension that embeds Rate My Professor data directly into ASU’s course catalog.
+----------------------------------------------------------------------------------------------------
+
+# ASU ProfessorView
+
+Chrome Web Store extension that integrates Rate My Professor ratings directly into Arizona State University's class search interface.
+
+Students can view ratings, review counts, difficulty scores, and top tags inline while browsing courses, eliminating the need to cross-reference multiple tabs.
+
+**Result:** Published to the Chrome Web Store with a 5-star rating.
+
+---
+
+## Overview
+
+Course planning at ASU typically requires switching between the university catalog and Rate My Professor to evaluate instructors.
+This extension augments the catalog in place by detecting instructors in the search results, retrieving their rating data, and injecting a structured UI card into the page without impacting performance.
+
+---
+
+## Key Features
+
+* Inline professor rating cards inside the ASU catalog
+* Support for multiple ASU campuses (Tempe, Polytechnic, West)
+* Compact and expanded display modes
+* Optional tag visibility
+* Synchronized user preferences via `chrome.storage.sync`
+
+---
+
+## Technical Highlights
+
+**Platform Architecture**
+
+* Chrome Manifest V3
+* Background service worker
+* Content script for DOM augmentation
+* Options page for persisted configuration
+
+**Data Layer**
+
+* Rate My Professor API integration through the background worker
+* Intelligent cross-campus result validation
+* Name normalization system for handling:
+
+  * Hyphenated names
+  * Spliced names
+  * Catalog/RMP mismatches
+
+**Performance Strategy**
+
+* In-memory cache
+
+  * 5-minute TTL
+  * LRU-style eviction
+  * 100-entry cap
+* Serialized request queue with rate limiting
+* Failure caching to prevent repeated bad requests
+
+**DOM Integration**
+
+* `MutationObserver` to detect dynamically loaded course results
+* Debounced processing to avoid redundant work
+* Targeted DOM injection without repeated full-page scans
+
+**Build System**
+
+* Vite-based build pipeline
+* Custom plugin for copying:
+
+  * manifest
+  * static assets
+  * extension HTML/CSS
+* Output structured for unpacked extension loading
+
+---
+
+## System Architecture
+
+| Layer                                           | Responsibility                                                                                |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **Content Script (`content.js`)**               | Scans the catalog, extracts instructor names, sends structured messages, injects rating cards |
+| **Background Service Worker (`background.ts`)** | API communication, caching, request queue, campus validation, name matching                   |
+| **Options Page (`options.ts/html`)**            | User settings for layout and tag visibility stored in `chrome.storage.sync`                   |
+
+This separation keeps DOM logic, network logic, and user configuration independent and maintainable.
+
+---
+
+## Engineering Challenges
+
+**Manifest V3 Constraints**
+
+* No persistent background process
+* Service worker lifecycle management
+* Fully asynchronous message passing
+
+**Unreliable External Data**
+
+* Inconsistent professor naming across systems
+* Need for deterministic matching strategy
+* Caching of failed lookups
+
+**Third-Party Page Augmentation**
+
+* Non-blocking execution
+* Minimal layout shift
+* Safe DOM injection
+
+---
+
+## What I Learned
+
+* Designing resilient integrations against inconsistent external data
+* Managing application state in a service-worker-based architecture
+* Building a performant client-side caching and request queue system
+* Applying defensive programming for production browser extensions
+* Shipping and maintaining a real-world distributed front-end system under platform constraints
+
+---
