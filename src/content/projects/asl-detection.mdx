@@ -1,0 +1,89 @@
+---
+
+title: Real-Time ASL Detection
+description: Real-time American Sign Language detection using MediaPipe and scikit-learn.
+
+---
+
+# Real-Time ASL Detection
+A computer vision system that recognizes American Sign Language hand signs in real time using a webcam, MediaPipe hand tracking, and a trained Random Forest classifier.
+The system supports 36 classes covering the full ASL alphabet (A-Z) and digits (0-9), delivering predictions with confidence scoring at interactive frame rates.
+
+---
+## Overview
+
+Communicating through American Sign Language requires fluency that most people lack. This project explores whether a lightweight machine learning pipeline can bridge that gap by translating static ASL hand signs into text in real time using only a standard webcam — no specialized hardware required.
+
+---
+## Key Features
+
+* Real-time hand landmark detection and visualization via MediaPipe
+* 36-class recognition covering A-Z letters and 0-9 digits
+* Confidence thresholding to suppress low-certainty predictions
+* End-to-end pipeline: data collection, augmentation, training, and inference
+* Runs on consumer hardware with a standard webcam
+
+---
+
+## Technical Highlights
+**Data Collection Pipeline**
+* Webcam-based image capture with per-class labeling
+* 100 base images per class across 36 classes
+* Organized directory structure for reproducible dataset creation
+**Data Augmentation**
+* Rotation (90 CW, 90 CCW)
+* Horizontal and vertical flips
+* HSV color jittering with randomized brightness and saturation
+* Expands the dataset by 10x per original image
+**Feature Extraction**
+* MediaPipe Hands for 21-landmark detection per frame
+* Each landmark produces (x, y) coordinates, yielding 42 features per sample
+* Static image mode for consistent landmark extraction during dataset creation
+**Model Training**
+* Random Forest classifier via scikit-learn
+* 80/20 stratified train-test split
+* Serialized model output via pickle for inference reuse
+**Real-Time Inference**
+* OpenCV video capture with continuous frame processing
+* MediaPipe hand landmark overlay on live video
+* Prediction confidence scoring with configurable threshold
+* Visual feedback: predicted character rendered on the video frame
+
+---
+
+## System Architecture
+
+| Component | Responsibility |
+|---|---|
+| **`collect_imgs.py`** | Captures labeled hand gesture images from webcam into per-class directories |
+| **`data_augmentation.py`** | Applies geometric and color transformations to expand the training dataset |
+| **`create_dataset.py`** | Extracts MediaPipe hand landmarks from images and serializes feature vectors |
+| **`train_classifier.py`** | Trains a Random Forest classifier and evaluates accuracy on a held-out test set |
+| **`inference_classifier.py`** | Runs real-time webcam inference with landmark visualization and character prediction |
+---
+
+## Engineering Challenges
+
+**Landmark Consistency**
+* MediaPipe does not always detect hands in every frame
+* Feature vectors must be exactly 42 elements; incomplete detections are discarded
+* Single-hand constraint to maintain consistent input dimensionality
+**Data Quality**
+* Webcam lighting and background variation affect landmark stability
+* Augmentation strategy needed to balance diversity without introducing noise
+* Some ASL signs are visually similar, requiring sufficient training samples for disambiguation
+**Real-Time Performance**
+* Frame-by-frame processing must stay within interactive latency
+* Confidence thresholding prevents flickering predictions on ambiguous frames
+* Balancing detection confidence settings against recall
+---
+
+## What I Learned
+
+* Building an end-to-end ML pipeline from data collection through deployment
+* Working with MediaPipe's hand tracking API and understanding landmark-based feature engineering
+* The importance of data augmentation in small-dataset scenarios
+* Practical tradeoffs between model complexity and real-time inference speed
+* Designing confidence-based filtering to improve user experience in live prediction systems
+
+---

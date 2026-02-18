@@ -20,6 +20,24 @@ export const projects: Project[] = [
     },
   },
   {
+    title: "Real-Time ASL Detection",
+    slug: "asl-detection",
+    description:
+      "A real-time American Sign Language detection system using MediaPipe hand tracking and a Random Forest classifier to recognize ASL letters and digits via webcam.",
+    longDescription:
+      "This project implements a complete machine learning pipeline for real-time American Sign Language (ASL) detection. It captures hand gesture images via webcam, extracts 21 hand landmarks using MediaPipe, applies data augmentation (rotations, flips, color jittering) to expand the dataset, and trains a Random Forest classifier on the landmark features. The inference module processes live webcam frames, overlays detected hand landmarks, and displays predicted ASL characters in real time with confidence thresholding. The system supports 36 classes covering the full ASL alphabet and digits 0-9.",
+    techStack: ["Python", "OpenCV", "MediaPipe", "Scikit-learn", "Numpy"],
+    githubUrl: "https://github.com/joshuamanigault/realtime-asl-detection",
+    images: [],
+    featured: true,
+    category: "backend",
+    status: "completed",
+    dates: {
+      started: "2024-08",
+      completed: "2025-05"
+    },
+  },
+  {
     title: "Portfolio Website",
     slug: "portfolio-website",
     description:
