@@ -53,7 +53,7 @@ export default async function HomePage() {
               <span className="font-semibold">Music</span>
             </li>
             <li>
-              <span className="font-semibold">Currently learning Japanese</span>
+              <span className="font-semibold">Currently learning C++</span>
             </li>
             <li>
               <span className="font-semibold">Basketball & Working Out</span>
