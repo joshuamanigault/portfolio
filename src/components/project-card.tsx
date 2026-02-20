@@ -23,8 +23,8 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       className={cn(
         "group relative flex flex-col",
         "border-border bg-card rounded-lg border",
-        "shadow-sm transition-all duration-300",
-        "hover:-translate-y-1 hover:shadow-md",
+        "transition-all duration-300",
+        "hover:border-muted hover:-translate-y-0.5",
         "animate-slide-up opacity-0"
       )}
       style={{ animationDelay: `${index * 100}ms`, animationFillMode: "forwards" }}

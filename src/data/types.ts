@@ -28,29 +28,6 @@ export interface ProjectWithMeta extends Project {
   github?: GitHubRepoMeta;
 }
 
-export interface Education {
-  institution: string;
-  degree?: string;
-  field?: string;
-  startDate: string;
-  endDate?: string;
-}
-
-export interface Experience {
-  company: string;
-  role: string;
-  startDate: string;
-  endDate?: string;
-  description?: string;
-}
-
-export interface Certification {
-  name: string;
-  issuer: string;
-  year: string;
-  description?: string;
-}
-
 export interface SiteConfig {
   name: string;
   title: string;

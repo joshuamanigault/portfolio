@@ -16,19 +16,19 @@
   --color-input-border: #cccccc;
   --color-nav-inactive: #b3b3b3;
 
-  /* Dark mode colors */
-  --color-dark-background: #0a0a0f;
-  --color-dark-foreground: #e8e8ed;
-  --color-dark-muted: #8a8a95;
-  --color-dark-muted-foreground: #b8b8c2;
-  --color-dark-border: #2a2a35;
-  --color-dark-card: #14141f;
-  --color-dark-card-foreground: #a0a0ab;
-  --color-dark-accent: #5ba3c9;
-  --color-dark-accent-foreground: #e8e8ed;
-  --color-dark-surface: #1a1a25;
-  --color-dark-input-border: #3a3a45;
-  --color-dark-nav-inactive: #5a5a65;
+  /* Dark mode colors - darker grey palette */
+  --color-dark-background: #121214;
+  --color-dark-foreground: #e5e5e3;
+  --color-dark-muted: #8a8a8a;
+  --color-dark-muted-foreground: #c5c5c3;
+  --color-dark-border: #2a2a2e;
+  --color-dark-card: #1a1a1c;
+  --color-dark-card-foreground: #b0b0ae;
+  --color-dark-accent: #6bb3d9;
+  --color-dark-accent-foreground: #e5e5e3;
+  --color-dark-surface: #1e1e22;
+  --color-dark-input-border: #363639;
+  --color-dark-nav-inactive: #606065;
 
   /* Typography scale - uses next/font CSS variable */
   --font-sans: var(--font-poppins), "Poppins", ui-sans-serif, system-ui, sans-serif;

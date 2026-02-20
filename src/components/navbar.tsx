@@ -8,11 +8,8 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "/", label: "Works" },
-  { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
   { href: "/contact", label: "Contact" },
-  { href: "/resume.pdf", label: "Resume", external: true },
 ];
 
 export function Navbar() {
@@ -23,74 +20,55 @@ export function Navbar() {
     <header
       className={cn(
         "fixed top-0 left-0 z-50 w-full",
-        "px-[10%] py-4",
         "bg-background/80 backdrop-blur-md",
-        "flex items-center justify-between",
         "transition-all duration-300"
       )}
     >
-      <Link
-        href="/"
-        className="text-[25px] font-semibold text-foreground no-underline transition-opacity hover:opacity-70"
-        aria-label="Joshua Manigault - Home"
-      >
-        josh.
-      </Link>
+      {/* Inner container constrained to main content width */}
+      <div className="container-main flex items-center justify-between py-4">
+        <Link
+          href="/"
+          className="text-foreground text-[25px] font-semibold no-underline transition-opacity hover:opacity-70"
+          aria-label="Joshua Manigault - Home"
+        >
+          josh.
+        </Link>
 
-      {/* Desktop nav */}
-      <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
-        {navLinks.map((link) => {
-          const isActive =
-            !link.external &&
-            (link.href === "/"
-              ? pathname === "/"
-              : pathname.startsWith(link.href));
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
+          {navLinks.map((link) => {
+            const isActive = pathname.startsWith(link.href);
 
-          if (link.external) {
             return (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ml-6 text-lg font-medium text-nav-inactive transition-colors duration-300 hover:text-foreground"
+                className={cn(
+                  "ml-6 text-sm font-medium transition-colors duration-300",
+                  isActive ? "text-foreground" : "text-nav-inactive hover:text-foreground"
+                )}
               >
                 {link.label}
-              </a>
+              </Link>
             );
-          }
+          })}
+          <div className="ml-6">
+            <ThemeToggle />
+          </div>
+        </nav>
 
-          return (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "ml-6 text-lg font-medium transition-colors duration-300",
-                isActive
-                  ? "text-foreground"
-                  : "text-nav-inactive hover:text-foreground"
-              )}
-            >
-              {link.label}
-            </Link>
-          );
-        })}
-        <div className="ml-6">
+        {/* Mobile menu button */}
+        <div className="flex items-center gap-3 md:hidden">
           <ThemeToggle />
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="text-foreground"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
-      </nav>
-
-      {/* Mobile menu button */}
-      <div className="flex items-center gap-3 md:hidden">
-        <ThemeToggle />
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="text-foreground"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
       </div>
 
       {/* Mobile nav overlay */}
@@ -105,26 +83,7 @@ export function Navbar() {
           aria-label="Mobile navigation"
         >
           {navLinks.map((link) => {
-            const isActive =
-              !link.external &&
-              (link.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(link.href));
-
-            if (link.external) {
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xl font-medium text-nav-inactive transition-colors hover:text-foreground"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </a>
-              );
-            }
+            const isActive = pathname.startsWith(link.href);
 
             return (
               <Link
