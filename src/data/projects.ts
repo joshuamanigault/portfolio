@@ -8,15 +8,16 @@ export const projects: Project[] = [
       "A Chrome extension that displays Rate My Professor reviews directly in ASU's class search catalog.",
     longDescription:
       "ASU ProfessorView enhances the Arizona State University class catalog by embedding professor ratings and reviews from Rate My Professor directly into the search results. Students no longer need to switch between tabs — ratings appear right where they're browsing courses. Published on the Chrome Web Store with 5 stars and 750+ users.",
-    techStack: ["TypeScript", "JavaScript", "HTML", "CSS", ],
+    techStack: ["TypeScript", "JavaScript", "HTML", "CSS"],
     githubUrl: "https://github.com/joshuamanigault/ASUProfessorView",
-    liveUrl: "https://chromewebstore.google.com/detail/asu-professorview/kniajfafepienoohdheheofabfclpgnl",
+    liveUrl:
+      "https://chromewebstore.google.com/detail/asu-professorview/kniajfafepienoohdheheofabfclpgnl",
     images: ["/images/projects/ProfView Logo.png"],
     featured: true,
     category: "fullstack",
     status: "in-progress",
     dates: {
-      started: "2025-10"
+      started: "2025-10",
     },
   },
   {
@@ -28,13 +29,13 @@ export const projects: Project[] = [
       "This project implements a complete machine learning pipeline for real-time American Sign Language (ASL) detection. It captures hand gesture images via webcam, extracts 21 hand landmarks using MediaPipe, applies data augmentation (rotations, flips, color jittering) to expand the dataset, and trains a Random Forest classifier on the landmark features. The inference module processes live webcam frames, overlays detected hand landmarks, and displays predicted ASL characters in real time with confidence thresholding. The system supports 36 classes covering the full ASL alphabet and digits 0-9.",
     techStack: ["Python", "OpenCV", "MediaPipe", "Scikit-learn", "Numpy"],
     githubUrl: "https://github.com/joshuamanigault/realtime-asl-detection",
-    images: [],
+    images: ["/images/projects/asl-detection-screenshot.png"],
     featured: true,
     category: "backend",
     status: "completed",
     dates: {
       started: "2024-08",
-      completed: "2025-05"
+      completed: "2025-05",
     },
   },
   {
@@ -46,7 +47,7 @@ export const projects: Project[] = [
       "This portfolio website serves as a central hub for showcasing my software engineering projects, skills, and experience. Built with modern web technologies including Next.js, TypeScript, and Tailwind CSS, it features a data-driven architecture, dark mode support, and optimized performance. The site demonstrates my approach to clean code architecture and thoughtful UI design.",
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
     githubUrl: "https://github.com/joshuamanigault/portfolio",
-    images: [],
+    images: ["/images/projects/portfolio-screenshot.png"],
     featured: false,
     category: "web",
     status: "completed",
@@ -54,7 +55,7 @@ export const projects: Project[] = [
       started: "2024-01",
       completed: "2024-06",
     },
-  }
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
