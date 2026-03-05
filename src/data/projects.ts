@@ -7,7 +7,7 @@ export const projects: Project[] = [
     description:
       "A Chrome extension that displays Rate My Professor reviews directly in ASU's class search catalog.",
     longDescription:
-      "ASU ProfessorView enhances the Arizona State University class catalog by embedding professor ratings and reviews from Rate My Professor directly into the search results. Students no longer need to switch between tabs — ratings appear right where they're browsing courses. Published on the Chrome Web Store with 5 stars and over 1000 users.",
+      "ASU ProfessorView enhances the Arizona State University class catalog by embedding professor ratings and reviews from Rate My Professor directly into the search results. Students no longer need to switch between tabs — ratings appear right where they're browsing courses. Published on the Chrome Web Store with 5 stars and over 1300 users.",
     techStack: ["TypeScript", "JavaScript", "HTML", "CSS"],
     githubUrl: "https://github.com/joshuamanigault/ASUProfessorView",
     liveUrl:
