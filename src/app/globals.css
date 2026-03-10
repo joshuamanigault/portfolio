@@ -127,11 +127,11 @@
 /* Utility classes */
 @layer utilities {
   .container-main {
-    @apply mx-auto w-full max-w-[850px] px-5;
+    @apply mx-auto w-full max-w-[720px] px-5;
   }
 
   .container-wide {
-    @apply mx-auto w-full max-w-[940px] px-5;
+    @apply mx-auto w-full max-w-[850px] px-5;
   }
 
   .text-balance {
