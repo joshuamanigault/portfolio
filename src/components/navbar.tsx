@@ -16,7 +16,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 z-50 w-full",
+        "mt-12 w-full",
         "bg-background/80 backdrop-blur-md",
         "transition-all duration-300"
       )}
