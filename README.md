@@ -8,7 +8,6 @@ A modern, data-driven developer portfolio built with Next.js, TypeScript, and Ta
 - **Language**: TypeScript (strict mode)
 - **Styling**: Tailwind CSS
 - **Icons**: Lucide React
-- **Validation**: Zod
 - **Content**: MDX support via next-mdx-remote
 
 ## Getting Started
@@ -45,8 +44,6 @@ npm start
 src/
 ├── app/                    # Next.js App Router pages
 │   ├── about/              # /about page
-│   ├── api/contact/        # POST /api/contact endpoint
-│   ├── contact/            # /contact page
 │   ├── projects/           # /projects and /projects/[slug] pages
 │   ├── globals.css         # Global styles & Tailwind theme
 │   ├── layout.tsx          # Root layout (nav, footer, metadata)
@@ -54,7 +51,6 @@ src/
 │   └── page.tsx            # Homepage
 ├── components/             # Reusable React components
 │   ├── ui/                 # Primitive UI components (Button, etc.)
-│   ├── contact-form.tsx    # Contact form with validation
 │   ├── footer.tsx          # Site footer
 │   ├── hero-section.tsx    # Homepage hero with animations
 │   ├── mdx-content.tsx     # MDX renderer for case studies
@@ -74,8 +70,7 @@ src/
 └── lib/
     ├── github.ts           # GitHub API integration (build-time)
     ├── mdx.ts              # MDX file loader
-    ├── utils.ts            # Utility functions (cn, formatDate, slugify)
-    └── validators.ts       # Zod validation schemas
+    └── utils.ts            # Utility functions (cn, formatDate, slugify)
 ```
 
 ## Adding a New Project
@@ -123,7 +118,6 @@ Write your detailed case study here using MDX...
 - **GitHub integration**: Stars and last-updated metadata fetched at build time
 - **Dark mode**: System-aware with manual toggle
 - **Filtering & search**: Client-side project filtering by category, tech stack, and text search with URL query params
-- **Contact form**: Validated with Zod, submitted to API route with loading/success/error states
 - **MDX case studies**: Rich project writeups without editing page code
 - **Responsive**: Mobile-first design with responsive navigation
 - **Accessible**: Semantic HTML, ARIA labels, keyboard navigation
@@ -140,9 +134,9 @@ Write your detailed case study here using MDX...
 
 ### Environment Variables
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `GITHUB_TOKEN` | No | GitHub personal access token for repo metadata fetching (increases rate limit) |
+| Variable       | Required | Description                                                                    |
+| -------------- | -------- | ------------------------------------------------------------------------------ |
+| `GITHUB_TOKEN` | No       | GitHub personal access token for repo metadata fetching (increases rate limit) |
 
 ## License
 
