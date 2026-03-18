@@ -15,11 +15,7 @@ export function Navbar() {
 
   return (
     <header
-      className={cn(
-        "mt-12 w-full",
-        "bg-background/85 dark:bg-background backdrop-blur-md",
-        "transition-all duration-300"
-      )}
+      className={cn("mt-12 w-full", "bg-background", "transition-colors duration-300")}
     >
       <div className="container-main flex items-center justify-between py-4">
         <Link
