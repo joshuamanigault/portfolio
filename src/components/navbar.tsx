@@ -7,10 +7,7 @@ import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
-const navLinks = [
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
-];
+const navLinks = [{ href: "/projects", label: "Projects" }];
 
 export function Navbar() {
   const pathname = usePathname();
@@ -19,7 +16,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 z-50 w-full",
+        "w-full",
         "bg-background/85 dark:bg-background backdrop-blur-md",
         "transition-all duration-300"
       )}
