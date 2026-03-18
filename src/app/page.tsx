@@ -39,28 +39,6 @@ export default async function HomePage() {
           {positioningStatement}
         </p>
 
-        {/* Interests */}
-        <div
-          className={cn("mt-6", "animate-fade-in opacity-0")}
-          style={{ animationDelay: "75ms", animationFillMode: "forwards" }}
-        >
-          <p className="text-muted-foreground mb-2 text-sm">Some of my interests:</p>
-          <ul className="text-muted-foreground ml-5 list-disc space-y-1 text-sm">
-            <li>
-              <span className="font-semibold">Video Games</span>
-            </li>
-            <li>
-              <span className="font-semibold">Music</span>
-            </li>
-            <li>
-              <span className="font-semibold">Currently learning C++</span>
-            </li>
-            <li>
-              <span className="font-semibold">Basketball & Working Out</span>
-            </li>
-          </ul>
-        </div>
-
         {/* Social icons */}
         <div
           className={cn("mt-8 flex items-center gap-4", "animate-fade-in opacity-0")}

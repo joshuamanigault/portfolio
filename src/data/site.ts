@@ -15,4 +15,4 @@ export const siteConfig: SiteConfig = {
 };
 
 export const positioningStatement =
-  "I'm currently a student at Arizona State University pursuing a B.S in Computer Science. I like creating things that provide a solution to many people's problems in my free time using modern, efficient, and scalable technologies.";
+  "I'm currently a student at Arizona State University pursuing a B.S in Computer Science. I like creating products that provide a solution to many people's problems in my free time.";
