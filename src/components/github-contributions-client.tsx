@@ -41,14 +41,14 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
   // Don't render until mounted to avoid hydration mismatch
   if (!mounted) {
     return (
-      <div className="border-border bg-card overflow-x-auto rounded-lg border p-4">
+      <div className="border-border bg-card rounded-lg border p-4">
         <div className="bg-muted min-h-[150px] w-full animate-pulse rounded" />
       </div>
     );
   }
 
   return (
-    <div className="border-border bg-card overflow-x-auto rounded-lg border p-4 pb-6">
+    <div className="border-border bg-card rounded-lg border p-4">
       <GitHubCalendar
         username={username}
         colorScheme={isDark ? "dark" : "light"}
@@ -59,7 +59,6 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
         blockSize={11}
         blockMargin={3}
         fontSize={12}
-        showWeekdayLabels
         showColorLegend={false}
         showTotalCount={false}
       />

@@ -154,3 +154,13 @@
   --color-input-border: var(--color-dark-input-border);
   --color-nav-inactive: var(--color-dark-nav-inactive);
 }
+
+/* GitHub calendar tweaks */
+.react-activity-calendar__scroll-container {
+  padding-bottom: 0.75rem;
+  overflow-y: hidden;
+}
+
+.react-activity-calendar__calendar {
+  margin-bottom: 0.25rem;
+}
