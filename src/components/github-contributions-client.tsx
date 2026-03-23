@@ -2,25 +2,22 @@
 
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
+import { GitHubCalendar } from "react-github-calendar";
 
 // Track mount state without useEffect + setState
 const emptySubscribe = () => () => {};
 
-// Custom green base color for the chart - balanced (not too neon, not too dull)
-const CHART_COLOR_LIGHT = "40a050"; // vibrant but not neon green
-const CHART_COLOR_DARK = "4aba5a"; // brighter for dark mode visibility
-
-// Legend colors matching the shades the API generates from our base color
-const LEGEND_COLORS_LIGHT = [
-  "#ebedf0", // no contributions (GitHub's default empty color)
+// Custom color themes matching GitHub's contribution levels
+const THEME_COLORS_LIGHT = [
+  "#ebedf0", // no contributions (GitHub's default empty color - grey)
   "#b8e4b8", // lightest shade
   "#7ac87a", // light shade
   "#50b050", // medium shade
   "#40a050", // base color (most contributions)
 ];
 
-const LEGEND_COLORS_DARK = [
-  "#1a1a1a", // no contributions (dark background)
+const THEME_COLORS_DARK = [
+  "#1a1a1a", // no contributions (dark grey background)
   "#2a5a2a", // lightest shade
   "#3a7a3a", // light shade
   "#4aba5a", // medium shade (base)
@@ -40,17 +37,28 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
   );
 
   const isDark = mounted && resolvedTheme === "dark";
-  const chartColor = isDark ? CHART_COLOR_DARK : CHART_COLOR_LIGHT;
-  const chartUrl = `https://ghchart.rshah.org/${chartColor}/${username}`;
+
+  // Don't render until mounted to avoid hydration mismatch
+  if (!mounted) {
+    return (
+      <div className="border-border bg-card overflow-x-auto rounded-lg border p-4">
+        <div className="bg-muted min-h-[150px] w-full animate-pulse rounded" />
+      </div>
+    );
+  }
 
   return (
     <div className="border-border bg-card overflow-x-auto rounded-lg border p-4">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={chartUrl}
-        alt={`${username}'s GitHub contribution graph`}
-        className="w-full min-w-[700px]"
-        loading="lazy"
+      <GitHubCalendar
+        username={username}
+        colorScheme={isDark ? "dark" : "light"}
+        theme={{
+          light: THEME_COLORS_LIGHT,
+          dark: THEME_COLORS_DARK,
+        }}
+        blockSize={11}
+        blockMargin={3}
+        fontSize={12}
       />
     </div>
   );
@@ -65,7 +73,7 @@ export function GitHubContributionsLegend() {
   );
 
   const isDark = mounted && resolvedTheme === "dark";
-  const legendColors = isDark ? LEGEND_COLORS_DARK : LEGEND_COLORS_LIGHT;
+  const legendColors = isDark ? THEME_COLORS_DARK : THEME_COLORS_LIGHT;
 
   return (
     <div className="flex items-center gap-1">
