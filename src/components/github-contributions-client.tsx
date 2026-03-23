@@ -48,7 +48,7 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
   }
 
   return (
-    <div className="border-border bg-card overflow-x-auto rounded-lg border p-4">
+    <div className="border-border bg-card overflow-x-auto rounded-lg border p-4 pb-6">
       <GitHubCalendar
         username={username}
         colorScheme={isDark ? "dark" : "light"}
@@ -59,6 +59,9 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
         blockSize={11}
         blockMargin={3}
         fontSize={12}
+        showWeekdayLabels
+        showColorLegend={false}
+        showTotalCount={false}
       />
     </div>
   );
