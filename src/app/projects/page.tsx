@@ -5,12 +5,10 @@ import { ProjectsClient } from "./projects-client";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description:
-    "Browse Joshua Manigault's software engineering projects — filter by category and technology.",
+  description: "Browse Joshua Manigault's software engineering projects.",
   openGraph: {
     title: "Projects | Joshua Manigault",
-    description:
-      "Browse Joshua Manigault's software engineering projects — filter by category and technology.",
+    description: "Browse Joshua Manigault's software engineering projects.",
   },
 };
 

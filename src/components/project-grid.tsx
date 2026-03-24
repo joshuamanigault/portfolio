@@ -9,9 +9,9 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
   if (projects.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center">
-        <p className="text-lg text-muted">No projects found.</p>
-        <p className="mt-1 text-sm text-card-foreground">
-          Try adjusting your search or filter criteria.
+        <p className="text-muted text-lg">Projects are on the way.</p>
+        <p className="text-card-foreground mt-1 text-sm">
+          Check back soon to explore new builds.
         </p>
       </div>
     );
