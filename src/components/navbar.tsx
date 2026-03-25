@@ -7,7 +7,10 @@ import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
-const navLinks = [{ href: "/projects", label: "Projects" }];
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
+];
 
 export function Navbar() {
   const pathname = usePathname();
@@ -29,7 +32,8 @@ export function Navbar() {
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
           {navLinks.map((link) => {
-            const isActive = pathname.startsWith(link.href);
+            const isActive =
+              link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
 
             return (
               <Link
@@ -75,7 +79,8 @@ export function Navbar() {
           aria-label="Mobile navigation"
         >
           {navLinks.map((link) => {
-            const isActive = pathname.startsWith(link.href);
+            const isActive =
+              link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
 
             return (
               <Link
