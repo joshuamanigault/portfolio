@@ -15,7 +15,6 @@ export const projects: Project[] = [
     images: ["/images/projects/ProfView Logo.png"],
     featured: true,
     category: "fullstack",
-    status: "in-progress",
     dates: {
       started: "2025-10",
     },
@@ -32,7 +31,6 @@ export const projects: Project[] = [
     images: ["/images/projects/asl-detection-screenshot.png"],
     featured: true,
     category: "backend",
-    status: "completed",
     dates: {
       started: "2024-08",
       completed: "2025-05",
@@ -50,7 +48,6 @@ export const projects: Project[] = [
     images: ["/images/projects/portfolio-screenshot.png"],
     featured: false,
     category: "web",
-    status: "completed",
     dates: {
       started: "2024-01",
       completed: "2024-06",

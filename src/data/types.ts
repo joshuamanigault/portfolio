@@ -1,4 +1,3 @@
-export type ProjectStatus = "completed" | "in-progress" | "planned";
 export type ProjectCategory = "web" | "mobile" | "backend" | "fullstack" | "other";
 
 export interface Project {
@@ -12,7 +11,6 @@ export interface Project {
   images: string[];
   featured: boolean;
   category: ProjectCategory;
-  status: ProjectStatus;
   dates: {
     started: string;
     completed?: string;
