@@ -13,7 +13,6 @@ export const projects: Project[] = [
     liveUrl:
       "https://chromewebstore.google.com/detail/asu-professorview/kniajfafepienoohdheheofabfclpgnl",
     images: ["/images/projects/ProfView Logo.png"],
-    featured: true,
     category: "fullstack",
     dates: {
       started: "2025-10",
@@ -29,7 +28,6 @@ export const projects: Project[] = [
     techStack: ["Python", "OpenCV", "MediaPipe", "Scikit-learn", "Numpy"],
     githubUrl: "https://github.com/joshuamanigault/realtime-asl-detection",
     images: ["/images/projects/asl-detection-screenshot.png"],
-    featured: true,
     category: "backend",
     dates: {
       started: "2024-08",
@@ -46,7 +44,6 @@ export const projects: Project[] = [
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
     githubUrl: "https://github.com/joshuamanigault/portfolio",
     images: ["/images/projects/portfolio-screenshot.png"],
-    featured: false,
     category: "web",
     dates: {
       started: "2024-01",
@@ -57,10 +54,6 @@ export const projects: Project[] = [
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
-}
-
-export function getFeaturedProjects(): Project[] {
-  return projects.filter((p) => p.featured);
 }
 
 export function getProjectsByCategory(category: string): Project[] {
@@ -78,13 +71,3 @@ export function getAllTechStacks(): string[] {
   return Array.from(techSet).sort();
 }
 
-export function searchProjects(query: string): Project[] {
-  const q = query.toLowerCase();
-  return projects.filter(
-    (p) =>
-      p.title.toLowerCase().includes(q) ||
-      p.description.toLowerCase().includes(q) ||
-      p.techStack.some((t) => t.toLowerCase().includes(q)) ||
-      p.category.toLowerCase().includes(q)
-  );
-}
