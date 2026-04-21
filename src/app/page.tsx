@@ -18,15 +18,26 @@ export default async function HomePage() {
       {/* Identity / Hero Section */}
       <header className="mb-16">
         {/* About Me heading */}
-        <h2
+        <h1
           className={cn(
             "text-foreground mb-4 text-xl font-semibold",
             "animate-fade-in opacity-0"
           )}
           style={{ animationDelay: "0ms", animationFillMode: "forwards" }}
         >
-          About Me
-        </h2>
+          Hi, I'm {siteConfig.name} ⛷️
+        </h1>
+
+        <p
+          className={cn(
+            "text-muted flex items-center gap-2 text-sm",
+            "animate-fade-in opacity-0 mb-4"
+          )}
+          style={{ animationDelay: "50ms", animationFillMode: "forwards" }}
+        >
+          <span className="status-dot"></span>
+          incoming software engineer intern @ raytheon
+        </p>
 
         {/* Positioning statement */}
         <p
