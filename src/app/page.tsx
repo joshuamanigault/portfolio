@@ -1,8 +1,5 @@
 import { Github, Linkedin, Mail } from "lucide-react";
-import { getFeaturedProjects } from "@/data/projects";
-import { enrichProjectsWithGitHub } from "@/lib/github";
 import { siteConfig, positioningStatement } from "@/data/site";
-import { ProjectGrid } from "@/components/project-grid";
 import { GitHubContributions } from "@/components/github-contributions";
 import { cn } from "@/lib/utils";
 
@@ -10,9 +7,6 @@ const RESUME_URL =
   "https://drive.google.com/file/d/17sn8Upe6HyH85dfX2NMWna9Vzvx71nAK/view?usp=sharing";
 
 export default async function HomePage() {
-  const featured = getFeaturedProjects();
-  const featuredWithMeta = await enrichProjectsWithGitHub(featured);
-
   return (
     <div className="container-main py-12 md:py-16">
       {/* Identity / Hero Section */}
@@ -91,19 +85,10 @@ export default async function HomePage() {
         <GitHubContributions />
       </section>
 
-      {/* Featured Projects */}
-      <section
-        className={cn("mb-16", "animate-fade-in opacity-0")}
-        style={{ animationDelay: "300ms", animationFillMode: "forwards" }}
-      >
-        <h2 className="text-foreground mb-6 text-xl font-semibold">Featured Projects</h2>
-        <ProjectGrid projects={featuredWithMeta} />
-      </section>
-
       {/* Resume CTA */}
       <section
         className={cn("flex justify-center", "animate-fade-in opacity-0")}
-        style={{ animationDelay: "400ms", animationFillMode: "forwards" }}
+        style={{ animationDelay: "300ms", animationFillMode: "forwards" }}
       >
         <a
           href={RESUME_URL}

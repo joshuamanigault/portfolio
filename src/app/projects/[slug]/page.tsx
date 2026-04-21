@@ -56,13 +56,6 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
   const mdxContent = getProjectMDXContent(slug);
 
-  const statusColors: Record<string, string> = {
-    completed: "bg-green-600/15 text-green-800 dark:bg-green-500/20 dark:text-green-400",
-    "in-progress":
-      "bg-yellow-600/15 text-yellow-800 dark:bg-yellow-500/20 dark:text-yellow-400",
-    planned: "bg-blue-600/15 text-blue-800 dark:bg-blue-500/20 dark:text-blue-400",
-  };
-
   return (
     <Section>
       {/* Back link */}
@@ -76,18 +69,9 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
       {/* Header */}
       <div className="mb-10">
-        <div className="mb-4 flex flex-wrap items-center gap-3">
-          <h1 className="text-foreground text-3xl font-semibold md:text-4xl">
-            {project.title}
-          </h1>
-          <span
-            className={`rounded-full px-3 py-1 text-xs font-medium ${statusColors[project.status]}`}
-          >
-            {project.status === "in-progress"
-              ? "In Progress"
-              : project.status.charAt(0).toUpperCase() + project.status.slice(1)}
-          </span>
-        </div>
+        <h1 className="text-foreground mb-4 text-3xl font-semibold md:text-4xl">
+          {project.title}
+        </h1>
 
         <p className="text-card-foreground mb-6 max-w-2xl text-base leading-relaxed">
           {project.description}

@@ -89,14 +89,6 @@ export default function ContactPage() {
           );
         })}
       </div>
-
-      {/* Footer Note */}
-      <div
-        className={cn("text-muted animate-fade-in mt-16 text-sm opacity-0")}
-        style={{ animationDelay: "300ms", animationFillMode: "forwards" }}
-      >
-        I typically respond within 24-48 hours.
-      </div>
     </div>
   );
 }
