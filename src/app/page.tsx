@@ -96,7 +96,7 @@ export default async function HomePage() {
           rel="noopener noreferrer"
           className="border-border bg-card hover:bg-muted/50 text-foreground inline-flex items-center gap-2 rounded-lg border px-6 py-3 text-sm font-medium transition-colors"
         >
-          View Resume
+          Open Resume
         </a>
       </section>
     </div>
