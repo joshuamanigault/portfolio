@@ -33,6 +33,24 @@ export default async function HomePage() {
           incoming software engineer intern @ raytheon
         </p>
 
+        <p
+          className={cn(
+            "text-muted-foreground max-w-2xl text-base leading-relaxed",
+            "animate-fade-in opacity-0 mb-4"
+          )}
+          style={{ animationDelay: "50ms", animationFillMode: "forwards" }}
+        >
+          I love making videos surrounding CS content —&nbsp;
+          <a
+            href="https://www.tiktok.com/@joshdoescode"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline transition-colors hover:text-foreground font-semibold"
+          >
+              check it out
+          </a>
+        </p>
+
         {/* Positioning statement */}
         <p
           className={cn(
