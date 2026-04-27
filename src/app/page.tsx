@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { siteConfig, positioningStatement } from "@/data/site";
 import { GitHubContributions } from "@/components/github-contributions";
+import { Experience } from "@/components/experience";
 import { cn } from "@/lib/utils";
 
 const RESUME_URL =
@@ -25,7 +26,7 @@ export default async function HomePage() {
         <p
           className={cn(
             "text-muted flex items-center gap-2 text-sm",
-            "animate-fade-in opacity-0 mb-4"
+            "animate-fade-in mb-4 opacity-0"
           )}
           style={{ animationDelay: "50ms", animationFillMode: "forwards" }}
         >
@@ -36,7 +37,7 @@ export default async function HomePage() {
         <p
           className={cn(
             "text-muted-foreground max-w-2xl text-base leading-relaxed",
-            "animate-fade-in opacity-0 mb-4"
+            "animate-fade-in mb-4 opacity-0"
           )}
           style={{ animationDelay: "50ms", animationFillMode: "forwards" }}
         >
@@ -45,9 +46,9 @@ export default async function HomePage() {
             href="https://www.tiktok.com/@joshdoescode"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline transition-colors hover:text-foreground font-semibold"
+            className="hover:text-foreground font-semibold underline transition-colors"
           >
-              check it out
+            check it out
           </a>
         </p>
 
@@ -94,6 +95,9 @@ export default async function HomePage() {
           </a>
         </div>
       </header>
+
+      {/* Experience Section */}
+      <Experience />
 
       {/* GitHub Contributions */}
       <section
