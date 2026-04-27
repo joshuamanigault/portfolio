@@ -25,6 +25,15 @@ export interface ProjectWithMeta extends Project {
   github?: GitHubRepoMeta;
 }
 
+export interface Experience {
+  role: string;
+  company: string;
+  dateRange: string;
+  description: string;
+  logoSrc?: string;
+  logoAlt?: string;
+}
+
 export interface SiteConfig {
   name: string;
   title: string;
