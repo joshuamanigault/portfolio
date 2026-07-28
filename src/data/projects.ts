@@ -34,22 +34,6 @@ export const projects: Project[] = [
       completed: "2025-05",
     },
   },
-  {
-    title: "Portfolio Website",
-    slug: "portfolio-website",
-    description:
-      "A modern, responsive portfolio website built with Next.js and Tailwind CSS to showcase projects and skills.",
-    longDescription:
-      "This portfolio website serves as a central hub for showcasing my software engineering projects, skills, and experience. Built with modern web technologies including Next.js, TypeScript, and Tailwind CSS, it features a data-driven architecture, dark mode support, and optimized performance. The site demonstrates my approach to clean code architecture and thoughtful UI design.",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
-    githubUrl: "https://github.com/joshuamanigault/portfolio",
-    images: ["/images/projects/portfolio-screenshot.png"],
-    category: "web",
-    dates: {
-      started: "2024-01",
-      completed: "2024-06",
-    },
-  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
