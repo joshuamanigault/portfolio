@@ -2,11 +2,11 @@ import type { Experience } from "./types";
 
 export const experiences: Experience[] = [
   {
-    role: "Incoming SWE Intern",
+    role: "Software Engineer Intern",
     company: "Raytheon",
     dateRange: "Jun 2026 – Aug 2026",
     description:
-      "Incoming Test Equipment intern at Raytheon, designing, developing, and implementing software to support the testing of advanced defense systems.",
+      "Test Equipment intern at Raytheon, designing, developing, and implementing software to support the testing of advanced defense systems.",
     logoSrc: "/images/logos/raytheon_logo.svg",
     logoAlt: "Raytheon",
   },

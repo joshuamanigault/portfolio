@@ -31,7 +31,7 @@ export default async function HomePage() {
           style={{ animationDelay: "50ms", animationFillMode: "forwards" }}
         >
           <span className="status-dot"></span>
-          incoming software engineer intern @ raytheon
+          software engineer intern @ raytheon
         </p>
 
         <p
