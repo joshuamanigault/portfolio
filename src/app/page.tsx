@@ -20,7 +20,7 @@ export default async function HomePage() {
           )}
           style={{ animationDelay: "0ms", animationFillMode: "forwards" }}
         >
-          Hi, I'm {siteConfig.name} ⛷️
+          Hi, I'm {siteConfig.name}
         </h1>
 
         <p
