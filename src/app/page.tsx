@@ -31,7 +31,7 @@ export default async function HomePage() {
           style={{ animationDelay: "50ms", animationFillMode: "forwards" }}
         >
           <span className="status-dot"></span>
-          Student Research @ The Luminosity Lab
+          Student Researcher @ The Luminosity Lab
         </p>
 
         <p
