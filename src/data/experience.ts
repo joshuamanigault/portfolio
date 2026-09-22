@@ -14,7 +14,7 @@ export const experiences: Experience[] = [
     company: "Raytheon",
     dateRange: "Jun 2026 - Aug 2026",
     description:
-      "Test Equipment intern at Raytheon, designing, developing, and implementing software to support the testing of advanced defense systems.",
+      "Supported validation and verification of multiple test stations, worked with cross-functional teams, and enhanced test processes",
     logoSrc: "/images/logos/raytheon_logo.svg",
     logoAlt: "Raytheon",
   },
