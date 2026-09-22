@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   openGraph: {
@@ -55,13 +58,33 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    email: siteConfig.email,
+    jobTitle: "Student Researcher",
+    sameAs: [
+      siteConfig.socials.github,
+      siteConfig.socials.linkedin,
+      "https://www.tiktok.com/@joshdoescode",
+    ],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.variable} font-sans antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personSchema).replace(/</g, "\\u003c"),
+          }}
+        />
         <ThemeProvider>
-          <div className="flex min-h-screen flex-col">
+          <div className="flex min-h-[100dvh] flex-col">
             <Navbar />
-            <main className="flex-1 pt-[60px]">{children}</main>
+            <main className="flex-1 pt-6 md:pt-8">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>

@@ -12,9 +12,11 @@
   --color-card-foreground: #555555;
   --color-accent: #a8d8ea;
   --color-accent-foreground: #02020a;
+  --color-resume-fill: #121214;
+  --color-resume-foreground: #eeeeee;
   --color-surface: #dadada;
   --color-input-border: #cccccc;
-  --color-nav-inactive: #b3b3b3;
+  --color-nav-inactive: #676767;
 
   /* Dark mode colors - darker grey palette */
   --color-dark-background: #121214;
@@ -25,10 +27,10 @@
   --color-dark-card: #1a1a1c;
   --color-dark-card-foreground: #b0b0ae;
   --color-dark-accent: #6bb3d9;
-  --color-dark-accent-foreground: #e5e5e3;
+  --color-dark-accent-foreground: #02020a;
   --color-dark-surface: #1e1e22;
   --color-dark-input-border: #363639;
-  --color-dark-nav-inactive: #606065;
+  --color-dark-nav-inactive: #8a8a8a;
 
   /* Typography scale - uses next/font CSS variable */
   --font-sans: var(--font-poppins), "Poppins", ui-sans-serif, system-ui, sans-serif;
@@ -59,16 +61,6 @@
       opacity: 1;
     }
   }
-
-  @keyframes pulse {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
-  }
 }
 
 /* Base styles */
@@ -81,17 +73,17 @@
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
   }
+
+  :focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 3px;
+  }
 }
 
 /* Utility classes */
 @layer utilities {
   .container-main {
     @apply mx-auto w-full max-w-[720px] px-5;
-  }
-
-  .status-dot {
-    @apply inline-flex h-2 w-2 flex-shrink-0 rounded-full bg-green-500;
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }
 
@@ -106,9 +98,25 @@
   --color-card-foreground: var(--color-dark-card-foreground);
   --color-accent: var(--color-dark-accent);
   --color-accent-foreground: var(--color-dark-accent-foreground);
+  --color-resume-fill: #eeeeee;
+  --color-resume-foreground: #121214;
   --color-surface: var(--color-dark-surface);
   --color-input-border: var(--color-dark-input-border);
   --color-nav-inactive: var(--color-dark-nav-inactive);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
 }
 
 /* GitHub calendar tweaks */
@@ -119,4 +127,19 @@
 
 .react-activity-calendar__calendar {
   margin-bottom: 0.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

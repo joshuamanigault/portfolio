@@ -1,5 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
-import { siteConfig } from "@/data/site";
 import { fetchGitHubContributions } from "@/lib/github";
 import {
   GitHubContributionsChart,
@@ -19,18 +17,7 @@ export async function GitHubContributions({
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h2 className="text-foreground text-xl font-semibold">GitHub Contributions</h2>
-        <a
-          href={siteConfig.socials.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-muted hover:text-foreground inline-flex items-center gap-1 text-xs transition-colors"
-        >
-          View on GitHub
-          <ArrowUpRight size={12} />
-        </a>
-      </div>
+      <h2 className="text-foreground text-xl font-semibold">GitHub Contributions</h2>
 
       <GitHubContributionsChart username={username} />
 
