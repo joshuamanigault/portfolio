@@ -13,7 +13,13 @@ function ProjectsContent({ projects }: ProjectsClientProps) {
   return (
     <Section>
       <div className="mb-10">
-        <h1 className="text-muted mb-2 text-3xl font-medium">Projects</h1>
+        <h1 className="text-foreground text-3xl font-semibold tracking-[-0.03em]">
+          Projects
+        </h1>
+        <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
+          Selected software and research work, with notes on the decisions behind each
+          build.
+        </p>
       </div>
 
       <ProjectGrid projects={projects} />

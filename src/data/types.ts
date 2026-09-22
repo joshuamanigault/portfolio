@@ -5,6 +5,7 @@ export interface Project {
   slug: string;
   description: string;
   longDescription: string;
+  highlight: string;
   techStack: string[];
   githubUrl?: string;
   liveUrl?: string;

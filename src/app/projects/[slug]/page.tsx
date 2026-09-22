@@ -15,6 +15,14 @@ interface ProjectDetailPageProps {
   params: Promise<{ slug: string }>;
 }
 
+function formatProjectMonth(value: string) {
+  const [year, month] = value.split("-").map(Number);
+  return new Date(year, month - 1, 1).toLocaleDateString("en-US", {
+    month: "long",
+    year: "numeric",
+  });
+}
+
 export async function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,
@@ -34,10 +42,14 @@ export async function generateMetadata({
   return {
     title: project.title,
     description: project.description,
+    alternates: {
+      canonical: "/projects/" + project.slug,
+    },
     openGraph: {
       title: `${project.title} | Joshua Manigault`,
       description: project.description,
       type: "article",
+      url: "/projects/" + project.slug,
     },
   };
 }
@@ -67,9 +79,8 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         Back to projects
       </Link>
 
-      {/* Header */}
       <div className="mb-10">
-        <h1 className="text-foreground mb-4 text-3xl font-semibold md:text-4xl">
+        <h1 className="text-foreground mb-4 text-3xl font-semibold tracking-[-0.035em] md:text-4xl">
           {project.title}
         </h1>
 
@@ -81,20 +92,12 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         <div className="text-muted mb-6 flex flex-wrap items-center gap-4 text-sm">
           <span className="flex items-center gap-1.5">
             <Calendar size={14} />
-            Started{" "}
-            {new Date(project.dates.started).toLocaleDateString("en-US", {
-              month: "long",
-              year: "numeric",
-            })}
+            Started {formatProjectMonth(project.dates.started)}
           </span>
           {project.dates.completed && (
             <span className="flex items-center gap-1.5">
               <Calendar size={14} />
-              Completed{" "}
-              {new Date(project.dates.completed).toLocaleDateString("en-US", {
-                month: "long",
-                year: "numeric",
-              })}
+              Completed {formatProjectMonth(project.dates.completed)}
             </span>
           )}
           {githubMeta && (
@@ -133,9 +136,8 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         </div>
       </div>
 
-      {/* Project image */}
       {project.images.length > 0 && (
-        <div className="border-border mb-10 overflow-hidden rounded-lg border">
+        <div className="border-border mb-10 overflow-hidden rounded-md border">
           <div className="bg-surface relative aspect-video">
             <Image
               src={project.images[0]}
@@ -149,34 +151,26 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         </div>
       )}
 
-      {/* Tech stack */}
-      <div className="mb-10">
-        <h2 className="text-muted mb-3 text-sm font-semibold tracking-wider uppercase">
-          Tech Stack
-        </h2>
-        <div className="flex flex-wrap gap-2">
-          {project.techStack.map((tech) => (
-            <TechBadge key={tech} name={tech} />
-          ))}
-        </div>
+      <div className="border-border mb-12 grid gap-10 border-t pt-10 md:grid-cols-[minmax(0,1.35fr)_minmax(13rem,0.65fr)]">
+        <section>
+          <h2 className="text-foreground text-lg font-semibold">Project overview</h2>
+          <p className="text-muted-foreground mt-3 text-[15px] leading-7">
+            {project.longDescription}
+          </p>
+        </section>
+        <section>
+          <h2 className="text-foreground text-lg font-semibold">Technology</h2>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {project.techStack.map((tech) => (
+              <TechBadge key={tech} name={tech} />
+            ))}
+          </div>
+        </section>
       </div>
 
-      {/* Long description */}
-      <div className="mb-10">
-        <h2 className="text-muted mb-3 text-sm font-semibold tracking-wider uppercase">
-          About this project
-        </h2>
-        <p className="text-muted max-w-2xl text-[15px] leading-[30px]">
-          {project.longDescription}
-        </p>
-      </div>
-
-      {/* MDX Content (case study) */}
       {mdxContent && (
-        <div className="mb-10">
-          <h2 className="text-muted mb-6 text-sm font-semibold tracking-wider uppercase">
-            Case Study
-          </h2>
+        <div className="border-border mb-10 border-t pt-10">
+          <h2 className="text-foreground mb-6 text-xl font-semibold">Case study</h2>
           <MDXContent source={mdxContent.content} />
         </div>
       )}
