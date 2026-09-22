@@ -22,8 +22,7 @@ const variants: Record<ButtonVariant, string> = {
     "bg-foreground text-background hover:opacity-90 focus-visible:ring-2 focus-visible:ring-foreground",
   secondary:
     "bg-card text-foreground border border-border hover:bg-surface focus-visible:ring-2 focus-visible:ring-border",
-  ghost:
-    "text-foreground hover:bg-card focus-visible:ring-2 focus-visible:ring-border",
+  ghost: "text-foreground hover:bg-card focus-visible:ring-2 focus-visible:ring-border",
 };
 
 const sizes: Record<ButtonSize, string> = {
@@ -44,9 +43,9 @@ export function Button({
   onClick,
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2",
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap",
     "rounded-md font-medium",
-    "transition-all duration-200",
+    "transition-[color,background-color,border-color,opacity,transform] duration-200 active:scale-[0.98]",
     "focus-visible:outline-none",
     "disabled:pointer-events-none disabled:opacity-50",
     variants[variant],
@@ -57,12 +56,7 @@ export function Button({
   if (href) {
     if (external) {
       return (
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={classes}
-        >
+        <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
           {children}
         </a>
       );
@@ -75,12 +69,7 @@ export function Button({
   }
 
   return (
-    <button
-      type={type}
-      disabled={disabled}
-      onClick={onClick}
-      className={classes}
-    >
+    <button type={type} disabled={disabled} onClick={onClick} className={classes}>
       {children}
     </button>
   );

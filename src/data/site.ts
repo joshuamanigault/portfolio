@@ -15,4 +15,4 @@ export const siteConfig: SiteConfig = {
 };
 
 export const positioningStatement =
-  "Student at Arizona State University studying Computer Science — I build stuff just to build it.";
+  "I study Computer Science at Arizona State University and build stuff just to build it.";
