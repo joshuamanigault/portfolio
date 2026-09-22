@@ -12,6 +12,8 @@
   --color-card-foreground: #555555;
   --color-accent: #a8d8ea;
   --color-accent-foreground: #02020a;
+  --color-resume-fill: #121214;
+  --color-resume-foreground: #eeeeee;
   --color-surface: #dadada;
   --color-input-border: #cccccc;
   --color-nav-inactive: #676767;
@@ -96,6 +98,8 @@
   --color-card-foreground: var(--color-dark-card-foreground);
   --color-accent: var(--color-dark-accent);
   --color-accent-foreground: var(--color-dark-accent-foreground);
+  --color-resume-fill: #eeeeee;
+  --color-resume-foreground: #121214;
   --color-surface: var(--color-dark-surface);
   --color-input-border: var(--color-dark-input-border);
   --color-nav-inactive: var(--color-dark-nav-inactive);
