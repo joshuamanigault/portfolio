@@ -6,7 +6,7 @@ import { ResumeLink } from "@/components/resume-link";
 import { cn } from "@/lib/utils";
 
 const RESUME_URL =
-  "https://drive.google.com/file/d/17sn8Upe6HyH85dfX2NMWna9Vzvx71nAK/view?usp=sharing";
+  "https://drive.google.com/file/d/1iWdY37mxMjlfx-IMbYnPiJIDkQcx3fC_/view?usp=sharing";
 
 export default async function HomePage() {
   return (
