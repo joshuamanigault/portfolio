@@ -17,9 +17,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header
-      className={cn("mt-12 w-full", "bg-background", "transition-colors duration-300")}
-    >
+    <header className="mt-12 w-full">
       <div className="container-main flex items-center justify-between py-4">
         <Link
           href="/"
