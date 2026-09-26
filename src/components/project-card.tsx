@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowUpRight, Github, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ProjectWithMeta } from "@/data/types";
@@ -33,8 +32,6 @@ function formatProjectPeriod(project: ProjectWithMeta) {
 }
 
 export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
-  const detailHref = "/projects/" + project.slug;
-
   return (
     <article
       className={cn(
@@ -55,12 +52,7 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         </div>
 
         <h2 className="text-foreground text-xl leading-tight font-semibold tracking-[-0.02em]">
-          <Link
-            href={detailHref}
-            className="decoration-accent underline-offset-4 hover:underline"
-          >
-            {project.title}
-          </Link>
+          {project.title}
         </h2>
 
         <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
@@ -72,17 +64,6 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         </p>
 
         <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
-          <Link
-            href={detailHref}
-            className="text-foreground group inline-flex min-h-9 items-center gap-1.5 font-semibold whitespace-nowrap"
-          >
-            Read case study
-            <ArrowUpRight
-              size={15}
-              aria-hidden="true"
-              className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </Link>
           {project.githubUrl && (
             <a
               href={project.githubUrl}
@@ -109,19 +90,17 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       </div>
 
       {project.images.length > 0 && (
-        <Link
-          href={detailHref}
+        <div
           className="border-border bg-surface relative aspect-video overflow-hidden rounded-md border md:aspect-[4/3]"
-          aria-label={"Read the " + project.title + " case study"}
         >
           <Image
             src={project.images[0]}
-            alt=""
+            alt={project.title}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            className="object-cover"
             sizes="(max-width: 767px) calc(100vw - 40px), 216px"
           />
-        </Link>
+        </div>
       )}
     </article>
   );

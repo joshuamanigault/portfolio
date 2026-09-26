@@ -6,8 +6,6 @@ export const projects: Project[] = [
     slug: "asu-professorview",
     description:
       "A Chrome extension that displays Rate My Professor reviews directly in ASU's class search catalog.",
-    longDescription:
-      "ASU ProfessorView enhances the Arizona State University class catalog by embedding professor ratings and reviews from Rate My Professor directly into the search results. Students no longer need to switch between tabs. Ratings appear right where they're browsing courses. Published on the Chrome Web Store with 5 stars and over 1300 users.",
     highlight: "5-star Chrome extension used by more than 1,300 students.",
     techStack: ["TypeScript", "JavaScript", "HTML", "CSS"],
     githubUrl: "https://github.com/joshuamanigault/ASUProfessorView",
@@ -24,8 +22,6 @@ export const projects: Project[] = [
     slug: "asl-detection",
     description:
       "A real-time American Sign Language detection system using MediaPipe hand tracking and a Random Forest classifier to recognize ASL letters and digits via webcam.",
-    longDescription:
-      "This project implements a complete machine learning pipeline for real-time American Sign Language (ASL) detection. It captures hand gesture images via webcam, extracts 21 hand landmarks using MediaPipe, applies data augmentation (rotations, flips, color jittering) to expand the dataset, and trains a Random Forest classifier on the landmark features. The inference module processes live webcam frames, overlays detected hand landmarks, and displays predicted ASL characters in real time with confidence thresholding. The system supports 36 classes covering the full ASL alphabet and digits 0-9.",
     highlight: "Recognizes 36 ASL letters and digits in real time on consumer hardware.",
     techStack: ["Python", "OpenCV", "MediaPipe", "Scikit-learn", "Numpy"],
     githubUrl: "https://github.com/joshuamanigault/realtime-asl-detection",
@@ -37,10 +33,6 @@ export const projects: Project[] = [
     },
   },
 ];
-
-export function getProjectBySlug(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug);
-}
 
 export function getProjectsByCategory(category: string): Project[] {
   if (category === "all") return projects;

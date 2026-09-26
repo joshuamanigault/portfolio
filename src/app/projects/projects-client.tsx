@@ -17,8 +17,7 @@ function ProjectsContent({ projects }: ProjectsClientProps) {
           Projects
         </h1>
         <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
-          Selected software and research work, with notes on the decisions behind each
-          build.
+          Selected software and research work.
         </p>
       </div>
 
