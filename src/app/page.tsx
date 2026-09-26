@@ -15,7 +15,7 @@ export default async function HomePage() {
       <header className="mb-16">
         <h1
           className={cn(
-            "text-foreground mb-4 text-2xl font-semibold tracking-[-0.02em]",
+            "text-foreground text-2xl font-semibold tracking-[-0.02em]",
             "animate-fade-in opacity-0"
           )}
           style={{ animationDelay: "0ms", animationFillMode: "forwards" }}
@@ -24,7 +24,7 @@ export default async function HomePage() {
         </h1>
 
         <p
-          className={cn("text-muted text-sm", "animate-fade-in mb-4 opacity-0")}
+          className={cn("text-muted text-sm", "animate-fade-in mb-8 opacity-0")}
           style={{ animationDelay: "50ms", animationFillMode: "forwards" }}
         >
           Student Researcher at The Luminosity Lab
