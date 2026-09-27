@@ -13,7 +13,10 @@ const navLinks = [
 ];
 
 export function Navbar() {
-  const pathname = usePathname();
+  // `usePathname` can be null while the production router initializes on the
+  // first request. This component only renders on known app routes, so the
+  // safe fallback is the home route.
+  const pathname = usePathname() ?? "/";
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -37,6 +40,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={isActive ? "page" : undefined}
                 className={cn(
                   "ml-6 text-sm font-medium transition-colors duration-300",
                   isActive ? "text-foreground" : "text-nav-inactive hover:text-foreground"
@@ -84,6 +88,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={isActive ? "page" : undefined}
                 className={cn(
                   "text-xl font-medium transition-colors",
                   isActive ? "text-foreground" : "text-nav-inactive hover:text-foreground"
