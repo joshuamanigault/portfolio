@@ -19,17 +19,17 @@
   --color-nav-inactive: #676767;
 
   /* Dark mode colors - darker grey palette */
-  --color-dark-background: #121214;
-  --color-dark-foreground: #e5e5e3;
-  --color-dark-muted: #8a8a8a;
-  --color-dark-muted-foreground: #c5c5c3;
-  --color-dark-border: #2a2a2e;
-  --color-dark-card: #1a1a1c;
+  --color-dark-background: #08090a;
+  --color-dark-foreground: #e8e8e5;
+  --color-dark-muted: #858585;
+  --color-dark-muted-foreground: #c8c8c5;
+  --color-dark-border: #202124;
+  --color-dark-card: #101113;
   --color-dark-card-foreground: #b0b0ae;
   --color-dark-accent: #6bb3d9;
   --color-dark-accent-foreground: #02020a;
-  --color-dark-surface: #1e1e22;
-  --color-dark-input-border: #363639;
+  --color-dark-surface: #141517;
+  --color-dark-input-border: #292b2f;
   --color-dark-nav-inactive: #8a8a8a;
 
   /* Typography scale - uses next/font CSS variable */
@@ -85,6 +85,32 @@
   .container-main {
     @apply mx-auto w-full max-w-[720px] px-5;
   }
+
+  .nav-link {
+    position: relative;
+    padding-block: 0.3rem;
+    text-decoration: none;
+  }
+
+  .nav-link::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    content: "";
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 300ms cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after,
+  .nav-link-active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
 }
 
 /* Dark mode overrides via CSS custom properties */
@@ -99,7 +125,7 @@
   --color-accent: var(--color-dark-accent);
   --color-accent-foreground: var(--color-dark-accent-foreground);
   --color-resume-fill: #eeeeee;
-  --color-resume-foreground: #121214;
+  --color-resume-foreground: #08090a;
   --color-surface: var(--color-dark-surface);
   --color-input-border: var(--color-dark-input-border);
   --color-nav-inactive: var(--color-dark-nav-inactive);

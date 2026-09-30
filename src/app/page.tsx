@@ -2,11 +2,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import { siteConfig, positioningStatement } from "@/data/site";
 import { GitHubContributions } from "@/components/github-contributions";
 import { Experience } from "@/components/experience";
-import { ResumeLink } from "@/components/resume-link";
 import { cn } from "@/lib/utils";
-
-const RESUME_URL =
-  "https://drive.google.com/file/d/1iWdY37mxMjlfx-IMbYnPiJIDkQcx3fC_/view?usp=sharing";
 
 export default async function HomePage() {
   return (
@@ -90,16 +86,6 @@ export default async function HomePage() {
         style={{ animationDelay: "200ms", animationFillMode: "forwards" }}
       >
         <GitHubContributions />
-      </section>
-
-      <section
-        className={cn(
-          "border-border flex justify-center pt-10",
-          "animate-fade-in opacity-0"
-        )}
-        style={{ animationDelay: "300ms", animationFillMode: "forwards" }}
-      >
-        <ResumeLink href={RESUME_URL} />
       </section>
     </div>
   );
