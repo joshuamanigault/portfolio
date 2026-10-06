@@ -1,107 +1,30 @@
 import Image from "next/image";
-import { ArrowUpRight, Github, Star } from "lucide-react";
-import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { getProjectSummary, formatProjectPeriod } from "@/data/projects";
 import type { ProjectWithMeta } from "@/data/types";
 
-interface ProjectCardProps {
-  project: ProjectWithMeta;
-  index?: number;
-}
-
-function formatProjectPeriod(project: ProjectWithMeta) {
-  const [startYear, startMonth] = project.dates.started.split("-").map(Number);
-  const started = new Date(startYear, startMonth - 1, 1).toLocaleDateString("en-US", {
-    month: "short",
-    year: "numeric",
-  });
-
-  if (!project.dates.completed) {
-    return "Started " + started;
-  }
-
-  const [completedYear, completedMonth] = project.dates.completed.split("-").map(Number);
-  const completed = new Date(completedYear, completedMonth - 1, 1).toLocaleDateString(
-    "en-US",
-    {
-      month: "short",
-      year: "numeric",
-    }
-  );
-
-  return started + " - " + completed;
-}
-
-export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
+export function ProjectCard({ project }: { project: ProjectWithMeta }) {
   return (
-    <article
-      className={cn(
-        "group border-border grid gap-6 border-t py-8 md:grid-cols-[minmax(0,1fr)_13.5rem] md:items-start",
-        "animate-slide-up opacity-0"
-      )}
-      style={{ animationDelay: String(index * 90) + "ms", animationFillMode: "forwards" }}
-    >
-      <div className="min-w-0">
-        <div className="text-muted mb-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
-          <span>{formatProjectPeriod(project)}</span>
-          {project.github && (
-            <span className="inline-flex items-center gap-1.5">
-              <Star size={13} aria-hidden="true" />
-              {project.github.stars} {project.github.stars === 1 ? "star" : "stars"}
-            </span>
-          )}
-        </div>
-
-        <h2 className="text-foreground text-xl leading-tight font-semibold tracking-[-0.02em]">
-          {project.title}
-        </h2>
-
-        <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-          {project.description}
-        </p>
-        <p className="text-foreground mt-4 text-sm font-medium">{project.highlight}</p>
-        <p className="text-muted mt-3 text-xs leading-relaxed">
-          {project.techStack.join(", ")}
-        </p>
-
-        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted hover:text-foreground inline-flex min-h-9 items-center gap-1.5 whitespace-nowrap transition-colors"
-            >
-              <Github size={15} aria-hidden="true" />
-              Source
-            </a>
-          )}
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted hover:text-foreground inline-flex min-h-9 items-center gap-1.5 whitespace-nowrap transition-colors"
-            >
-              Live project
-              <ArrowUpRight size={15} aria-hidden="true" />
-            </a>
-          )}
-        </div>
-      </div>
-
-      {project.images.length > 0 && (
+    <article>
+      <Link href={`/projects/${project.slug}`} className="project-entry">
         <div
-          className="border-border bg-surface relative aspect-video overflow-hidden rounded-md border md:aspect-[4/3]"
+          className={`project-cover ${project.slug === "asu-professorview" ? "project-cover-logo" : ""}`}
         >
           <Image
             src={project.images[0]}
             alt={project.title}
             fill
-            className="object-cover"
-            sizes="(max-width: 767px) calc(100vw - 40px), 216px"
+            sizes="(max-width: 480px) calc(100vw - 36px), 240px"
           />
         </div>
-      )}
+        <div>
+          <p className="project-kicker">
+            {formatProjectPeriod(project)} · {getProjectSummary(project).metric}
+          </p>
+          <h2>{project.title}</h2>
+          <p className="project-summary">{getProjectSummary(project).tagline}</p>
+        </div>
+      </Link>
     </article>
   );
 }

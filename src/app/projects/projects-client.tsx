@@ -1,41 +1,14 @@
-"use client";
-
-import { Suspense } from "react";
-import { Section } from "@/components/section";
 import { ProjectGrid } from "@/components/project-grid";
 import type { ProjectWithMeta } from "@/data/types";
 
-interface ProjectsClientProps {
-  projects: ProjectWithMeta[];
-}
-
-function ProjectsContent({ projects }: ProjectsClientProps) {
+export function ProjectsClient({ projects }: { projects: ProjectWithMeta[] }) {
   return (
-    <Section>
-      <div className="mb-10">
-        <h1 className="text-foreground text-3xl font-semibold tracking-[-0.03em]">
-          Projects
-        </h1>
-        <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
-          Selected software and research work.
-        </p>
-      </div>
-
+    <section className="container-main projects-page">
+      <header>
+        <h1>Projects</h1>
+        <p className="page-lead">Selected software and research work.</p>
+      </header>
       <ProjectGrid projects={projects} />
-    </Section>
-  );
-}
-
-export function ProjectsClient({ projects }: ProjectsClientProps) {
-  return (
-    <Suspense
-      fallback={
-        <Section>
-          <div className="text-muted py-20 text-center">Loading projects...</div>
-        </Section>
-      }
-    >
-      <ProjectsContent projects={projects} />
-    </Suspense>
+    </section>
   );
 }
