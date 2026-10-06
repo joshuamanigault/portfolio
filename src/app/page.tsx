@@ -8,7 +8,6 @@ export default async function HomePage() {
   return (
     <div className="container-main home-page">
       <header className="mb-16">
-        <h1>Hi, I&apos;m {siteConfig.name}</h1>
         <p className="home-role">Student Researcher at The Luminosity Lab</p>
         <p className="home-intro text-muted-foreground">
           {positioningStatement} I also{" "}
