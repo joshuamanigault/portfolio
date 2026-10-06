@@ -2,17 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@/components/theme-toggle";
+import styles from "./navbar.module.css";
 
 export function Navbar() {
   const pathname = usePathname() ?? "/";
   const onProjects = pathname === "/projects" || pathname.startsWith("/projects/");
 
   return (
-    <header className="site-header container-main">
+    <header className={`site-header container-main ${styles.header}`}>
       <Link href="/" className="nav-link site-name" aria-label="Joshua Manigault - Home">
         joshua manigault
       </Link>
-      <nav aria-label="Main navigation">
+      <nav aria-label="Main navigation" className={styles.navigation}>
         <Link
           href="/projects"
           className="nav-link"
@@ -28,6 +30,7 @@ export function Navbar() {
         >
           resume
         </a>
+        <ThemeToggle />
       </nav>
     </header>
   );

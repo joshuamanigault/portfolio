@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import { siteConfig } from "@/data/site";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 const links = [
   { label: "github", href: siteConfig.socials.github },
@@ -30,8 +29,6 @@ export function Footer() {
             </a>
           </Fragment>
         ))}
-        <span aria-hidden="true">·</span>
-        <ThemeToggle />
       </nav>
     </footer>
   );
