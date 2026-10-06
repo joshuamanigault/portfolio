@@ -1,0 +1,84 @@
+.terminal {
+  font-family: var(--font-mono);
+  color: var(--color-muted);
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.command {
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.prompt {
+  color: #b45c39;
+}
+
+:global(.dark) .prompt {
+  color: #d58a65;
+}
+
+.githubLink {
+  flex-shrink: 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.calendar {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.calendar :global(.react-activity-calendar__scroll-container) {
+  padding-bottom: 0;
+}
+
+/* Let the focusable outer region own horizontal scrolling. */
+.calendar > :global(.react-activity-calendar) {
+  max-width: none !important;
+}
+
+.calendar :global(.react-activity-calendar__calendar) {
+  margin-bottom: 0;
+}
+
+.loading {
+  min-height: 104px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-top: 16px;
+}
+
+.count {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.scrollHint {
+  display: none;
+  margin-top: 8px;
+  font-size: 11px;
+  text-align: center;
+}
+
+@media (max-width: 736px) {
+  .scrollHint {
+    display: block;
+  }
+}
