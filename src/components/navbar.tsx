@@ -10,7 +10,7 @@ export function Navbar() {
   return (
     <header className="site-header container-main">
       <Link href="/" className="nav-link site-name" aria-label="Joshua Manigault - Home">
-        josh.
+        joshua manigault
       </Link>
       <nav aria-label="Main navigation">
         <Link
