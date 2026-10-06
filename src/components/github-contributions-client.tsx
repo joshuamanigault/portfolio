@@ -3,7 +3,6 @@
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
 import { GitHubCalendar } from "react-github-calendar";
-import styles from "./github-contributions.module.css";
 
 // Track mount state without useEffect + setState
 const emptySubscribe = () => () => {};
@@ -42,23 +41,14 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
   // Don't render until mounted to avoid hydration mismatch
   if (!mounted) {
     return (
-      <div
-        className={styles.loading}
-        aria-label="Loading GitHub contributions"
-        aria-busy="true"
-      >
-        <div className="bg-surface h-24 w-full animate-pulse" />
+      <div className="border-border bg-card rounded-md border p-4">
+        <div className="bg-muted min-h-[150px] w-full animate-pulse rounded-sm" />
       </div>
     );
   }
 
   return (
-    <div
-      className={styles.calendar}
-      tabIndex={0}
-      role="region"
-      aria-label="GitHub contribution calendar. Scroll horizontally to see all dates."
-    >
+    <div className="border-border bg-card rounded-md border p-4">
       <GitHubCalendar
         username={username}
         colorScheme={isDark ? "dark" : "light"}
@@ -67,10 +57,8 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
           dark: THEME_COLORS_DARK,
         }}
         blockSize={11}
-        blockMargin={2}
-        blockRadius={0}
+        blockMargin={3}
         fontSize={12}
-        showMonthLabels={false}
         showColorLegend={false}
         showTotalCount={false}
       />

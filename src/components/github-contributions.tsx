@@ -17,7 +17,7 @@ export async function GitHubContributions({
   const totalContributions = contributionData?.totalContributions;
 
   return (
-    <section className={styles.terminal} aria-label="GitHub contributions">
+    <section className="space-y-4" aria-label="GitHub contributions">
       <header className={styles.header}>
         <h2 className={styles.command}>
           <span className={styles.prompt} aria-hidden="true">
@@ -38,13 +38,9 @@ export async function GitHubContributions({
 
       <GitHubContributionsChart username={username} />
 
-      <p className={styles.scrollHint} aria-hidden="true">
-        ← scroll →
-      </p>
-
-      <div className={styles.footer}>
+      <div className="flex items-center justify-between">
         <GitHubContributionsLegend />
-        <p className={styles.count}>
+        <p className="text-muted text-xs">
           {totalContributions !== undefined
             ? `${totalContributions.toLocaleString()} contributions in the last year`
             : "Contributions in the last year"}
