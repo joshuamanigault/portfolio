@@ -41,6 +41,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   if (!project) notFound();
   const story = projectStories[slug];
   const summary = getProjectSummary(project);
+  const image = project.images[0];
   const nextProject = projects[(projects.indexOf(project) + 1) % projects.length];
 
   return (
@@ -55,21 +56,23 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <p>{summary.tagline}</p>
         </header>
 
-        <figure
-          className={`project-hero-image ${slug === "asu-professorview" ? "project-hero-logo" : ""}`}
-        >
-          <Image
-            src={project.images[0]}
-            alt={
-              slug === "asu-professorview"
-                ? "ASU ProfessorView's gold eye and graduation cap logo on a maroon background"
-                : "ASL detection running with hand landmarks and a predicted digit in the webcam feed"
-            }
-            fill
-            priority
-            sizes="(min-width: 1440px) 896px, (min-width: 1181px) calc(100vw - 544px), (min-width: 768px) 720px, calc(100vw - 36px)"
-          />
-        </figure>
+        {image && (
+          <figure
+            className={`project-hero-image ${slug === "asu-professorview" ? "project-hero-logo" : ""}`}
+          >
+            <Image
+              src={image}
+              alt={
+                slug === "asu-professorview"
+                  ? "ASU ProfessorView's gold eye and graduation cap logo on a maroon background"
+                  : "ASL detection running with hand landmarks and a predicted digit in the webcam feed"
+              }
+              fill
+              priority
+              sizes="(min-width: 1440px) 896px, (min-width: 1181px) calc(100vw - 544px), (min-width: 768px) 720px, calc(100vw - 36px)"
+            />
+          </figure>
+        )}
 
         <div className="project-body">
           <section aria-labelledby="about">
