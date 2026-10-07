@@ -1,8 +1,8 @@
 import { ProjectCard } from "@/components/project-card";
-import type { ProjectWithMeta } from "@/data/types";
+import type { Project } from "@/data/types";
 
 interface ProjectGridProps {
-  projects: ProjectWithMeta[];
+  projects: Project[];
 }
 
 export function ProjectGrid({ projects }: ProjectGridProps) {

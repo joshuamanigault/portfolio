@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export const projectSections = [
+const projectSections = [
   { id: "about", label: "About" },
   { id: "how-it-works", label: "How it works" },
   { id: "built-with", label: "Built with" },

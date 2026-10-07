@@ -34,21 +34,6 @@ export const projects: Project[] = [
   },
 ];
 
-export function getProjectsByCategory(category: string): Project[] {
-  if (category === "all") return projects;
-  return projects.filter((p) => p.category === category);
-}
-
-export function getAllCategories(): string[] {
-  const categories = new Set(projects.map((p) => p.category));
-  return ["all", ...Array.from(categories)];
-}
-
-export function getAllTechStacks(): string[] {
-  const techSet = new Set(projects.flatMap((p) => p.techStack));
-  return Array.from(techSet).sort();
-}
-
 export function formatProjectPeriod(project: Project): string {
   const started = project.dates.started.slice(0, 4);
   const completed = project.dates.completed?.slice(0, 4);
@@ -71,7 +56,7 @@ export function getProjectSummary(project: Project) {
   );
 }
 
-export interface ProjectStory {
+interface ProjectStory {
   about: string;
   steps: string[];
   technology: string;

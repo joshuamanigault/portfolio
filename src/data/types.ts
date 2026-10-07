@@ -16,15 +16,6 @@ export interface Project {
   };
 }
 
-export interface GitHubRepoMeta {
-  stars: number;
-  lastUpdated: string;
-}
-
-export interface ProjectWithMeta extends Project {
-  github?: GitHubRepoMeta;
-}
-
 export interface Experience {
   role: string;
   company: string;

@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getProjectSummary, formatProjectPeriod } from "@/data/projects";
-import type { ProjectWithMeta } from "@/data/types";
+import type { Project } from "@/data/types";
 
-export function ProjectCard({ project }: { project: ProjectWithMeta }) {
+export function ProjectCard({ project }: { project: Project }) {
   return (
     <article>
       <Link href={`/projects/${project.slug}`} className="project-entry">
