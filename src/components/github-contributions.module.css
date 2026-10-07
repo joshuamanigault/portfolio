@@ -13,10 +13,6 @@
   font-weight: 400;
 }
 
-.prompt {
-  color: inherit;
-}
-
 .githubLink {
   flex-shrink: 0;
   font-size: 12px;

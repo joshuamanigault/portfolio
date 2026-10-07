@@ -82,7 +82,7 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <button className="nav-link footer-theme" aria-label="Toggle theme">
+      <button className="nav-link theme-toggle" aria-label="Toggle theme">
         theme
       </button>
     );
@@ -92,7 +92,7 @@ export function ThemeToggle() {
     <button
       ref={buttonRef}
       onClick={toggleTheme}
-      className="nav-link footer-theme"
+      className="nav-link theme-toggle"
       aria-label={"Switch to " + (isDark ? "light" : "dark") + " theme"}
     >
       {isDark ? "light" : "dark"}

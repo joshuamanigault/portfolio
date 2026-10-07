@@ -11,12 +11,9 @@
   --color-card: #f5f5f5;
   --color-card-foreground: #555555;
   --color-accent: #a8d8ea;
-  --color-accent-foreground: #02020a;
   --color-resume-fill: #121214;
   --color-resume-foreground: #eeeeee;
   --color-surface: #dadada;
-  --color-input-border: #cccccc;
-  --color-nav-inactive: #676767;
 
   /* Dark mode colors - darker grey palette */
   --color-dark-background: #121214;
@@ -27,32 +24,14 @@
   --color-dark-card: #1a1a1c;
   --color-dark-card-foreground: #b0b0ae;
   --color-dark-accent: #6bb3d9;
-  --color-dark-accent-foreground: #02020a;
   --color-dark-surface: #1e1e22;
-  --color-dark-input-border: #363639;
-  --color-dark-nav-inactive: #8a8a8a;
 
   /* Typography shared with the reference portfolio. */
   --font-sans: var(--font-geist), "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
 
-  /* Spacing tokens */
-  --container-max: 850px;
-
   /* Animations */
-  --animate-slide-up: slide-up 0.5s ease-out forwards;
   --animate-fade-in: fade-in 0.8s ease-out forwards;
-
-  @keyframes slide-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 
   @keyframes fade-in {
     from {
@@ -98,12 +77,9 @@
   --color-card: var(--color-dark-card);
   --color-card-foreground: var(--color-dark-card-foreground);
   --color-accent: var(--color-dark-accent);
-  --color-accent-foreground: var(--color-dark-accent-foreground);
   --color-resume-fill: #eeeeee;
   --color-resume-foreground: #121214;
   --color-surface: var(--color-dark-surface);
-  --color-input-border: var(--color-dark-input-border);
-  --color-nav-inactive: var(--color-dark-nav-inactive);
 }
 
 ::view-transition-old(root),
@@ -159,8 +135,6 @@
   gap: 22px;
 }
 .site-name {
-  color: var(--color-muted);
-  font-size: 13px;
   letter-spacing: -0.02em;
 }
 .nav-link {
@@ -209,7 +183,7 @@
 .footer-links > span {
   opacity: 0.6;
 }
-.footer-theme {
+.theme-toggle {
   font: inherit;
   background: none;
   border: 0;
@@ -414,12 +388,6 @@
 .home-page {
   margin-top: 96px;
 }
-.home-page h1 {
-  font-size: 30px;
-  font-weight: 500;
-  letter-spacing: -0.016em;
-  line-height: 1.25;
-}
 .home-role {
   margin-top: 8px;
   color: var(--color-muted);
@@ -497,9 +465,6 @@
     margin-left: 0;
     gap: 0 8px;
   }
-  .footer-theme {
-    margin-left: auto;
-  }
 }
 @media (max-width: 480px) {
   .container-main {
@@ -515,9 +480,6 @@
   .projects-page,
   .project-detail-page {
     margin-top: 64px;
-  }
-  .home-page h1 {
-    font-size: 27px;
   }
   .project-entries {
     gap: 40px;

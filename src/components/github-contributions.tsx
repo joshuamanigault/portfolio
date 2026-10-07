@@ -20,9 +20,7 @@ export async function GitHubContributions({
     <section className="space-y-4" aria-label="GitHub contributions">
       <header className={styles.header}>
         <h2 className={styles.command}>
-          <span className={styles.prompt} aria-hidden="true">
-            ${" "}
-          </span>
+          <span aria-hidden="true">$ </span>
           git log --stat
         </h2>
         <a

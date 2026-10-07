@@ -1,4 +1,4 @@
-export type ProjectCategory = "web" | "mobile" | "backend" | "fullstack" | "other";
+type ProjectCategory = "web" | "mobile" | "backend" | "fullstack" | "other";
 
 export interface Project {
   title: string;
