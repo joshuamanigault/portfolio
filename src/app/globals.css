@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
 
 @theme {
   /* Color palette - preserving the original grayscale + lightblue accent */
