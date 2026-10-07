@@ -62,7 +62,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             src={project.images[0]}
             alt={
               slug === "asu-professorview"
-                ? "ASU ProfessorView's gold eye and sunburst logo on a maroon background"
+                ? "ASU ProfessorView's gold eye and graduation cap logo on a maroon background"
                 : "ASL detection running with hand landmarks and a predicted digit in the webcam feed"
             }
             fill
