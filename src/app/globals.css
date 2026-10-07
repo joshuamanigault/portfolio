@@ -417,7 +417,9 @@
 @media (max-width: 1180px) {
   .project-toc {
     position: sticky;
+    right: auto;
     top: 0;
+    bottom: auto;
     z-index: 10;
     width: auto;
     margin: -18px 0 28px;
