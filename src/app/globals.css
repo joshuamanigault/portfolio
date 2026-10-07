@@ -258,7 +258,7 @@
   object-fit: cover;
 }
 .project-cover-logo {
-  background: #702c38;
+  background: #8C1D40;
 }
 .project-cover-logo img {
   object-fit: contain;
@@ -316,7 +316,7 @@
 }
 .project-hero-logo {
   aspect-ratio: 16/10;
-  background: #702c38;
+  background: #8C1D40;
 }
 .project-body {
   margin-top: 48px;
