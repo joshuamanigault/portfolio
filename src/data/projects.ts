@@ -6,12 +6,12 @@ export const projects: Project[] = [
     slug: "asu-professorview",
     description:
       "A Chrome extension that displays Rate My Professor reviews directly in ASU's class search catalog.",
-    highlight: "5-star Chrome extension used by more than 1,300 students.",
+    highlight: "5-star Chrome extension used by more than 1,700 students.",
     techStack: ["TypeScript", "JavaScript", "HTML", "CSS"],
     githubUrl: "https://github.com/joshuamanigault/ASUProfessorView",
     liveUrl:
       "https://chromewebstore.google.com/detail/asu-professorview/kniajfafepienoohdheheofabfclpgnl",
-    images: ["/images/projects/ProfView Logo.png"],
+    images: ["/images/projects/ASU ProfessorView.png"],
     category: "fullstack",
     dates: {
       started: "2025-10",
@@ -59,7 +59,7 @@ export function getProjectSummary(project: Project) {
   const summaries: Record<string, { tagline: string; metric: string }> = {
     "asu-professorview": {
       tagline: "Professor reviews, right where you choose your classes.",
-      metric: "1,300+ students",
+      metric: "1,700+ students",
     },
     "asl-detection": {
       tagline: "American Sign Language recognition through your webcam.",
