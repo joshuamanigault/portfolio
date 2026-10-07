@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { projects } from "@/data/projects";
-import { enrichProjectsWithGitHub } from "@/lib/github";
-import { ProjectsClient } from "./projects-client";
+import { ProjectGrid } from "@/components/project-grid";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -16,8 +15,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function ProjectsPage() {
-  const projectsWithMeta = await enrichProjectsWithGitHub(projects);
-
-  return <ProjectsClient projects={projectsWithMeta} />;
+export default function ProjectsPage() {
+  return (
+    <section className="container-main projects-page">
+      <header>
+        <h1>Projects</h1>
+        <p className="page-lead">Selected software and research work.</p>
+      </header>
+      <ProjectGrid projects={projects} />
+    </section>
+  );
 }

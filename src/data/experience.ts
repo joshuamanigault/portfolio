@@ -5,7 +5,7 @@ export const experiences: Experience[] = [
     role: "Student Researcher",
     company: "The Luminosity Lab",
     dateRange: "Aug 2026 - Present",
-    description: "Student Driven Skunkworks Lab",
+    description: "Student Driven Skunkworks Innovation Lab",
     logoSrc: "/images/logos/luminosity_lab_logo.png",
     logoAlt: "The Luminosity Lab",
   },

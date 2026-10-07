@@ -1,4 +1,4 @@
-export type ProjectCategory = "web" | "mobile" | "backend" | "fullstack" | "other";
+type ProjectCategory = "web" | "mobile" | "backend" | "fullstack" | "other";
 
 export interface Project {
   title: string;
@@ -14,15 +14,6 @@ export interface Project {
     started: string;
     completed?: string;
   };
-}
-
-export interface GitHubRepoMeta {
-  stars: number;
-  lastUpdated: string;
-}
-
-export interface ProjectWithMeta extends Project {
-  github?: GitHubRepoMeta;
 }
 
 export interface Experience {

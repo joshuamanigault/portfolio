@@ -2,105 +2,36 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { cn } from "@/lib/utils";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-];
+import styles from "./navbar.module.css";
 
 export function Navbar() {
-  // `usePathname` can be null while the production router initializes on the
-  // first request. This component only renders on known app routes, so the
-  // safe fallback is the home route.
   const pathname = usePathname() ?? "/";
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const onProjects = pathname === "/projects" || pathname.startsWith("/projects/");
 
   return (
-    <header className="mt-12 w-full">
-      <div className="container-main flex items-center justify-between py-4">
+    <header className={`site-header container-main ${styles.header}`}>
+      <Link href="/" className="nav-link site-name" aria-label="Joshua Manigault - Home">
+        joshua manigault
+      </Link>
+      <nav aria-label="Main navigation" className={styles.navigation}>
         <Link
-          href="/"
-          className="text-foreground text-[25px] font-semibold no-underline transition-opacity hover:opacity-70"
-          aria-label="Joshua Manigault - Home"
+          href="/projects"
+          className="nav-link"
+          aria-current={onProjects ? "page" : undefined}
         >
-          josh.
+          projects
         </Link>
-
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
-          {navLinks.map((link) => {
-            const isActive =
-              link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
-
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={isActive ? "page" : undefined}
-                className={cn(
-                  "ml-6 text-sm font-medium transition-colors duration-300",
-                  isActive ? "text-foreground" : "text-nav-inactive hover:text-foreground"
-                )}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-          <div className="ml-6">
-            <ThemeToggle />
-          </div>
-        </nav>
-
-        {/* Mobile menu button */}
-        <div className="flex items-center gap-3 md:hidden">
-          <ThemeToggle />
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="text-foreground inline-flex size-10 items-center justify-center rounded-md active:scale-[0.98]"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile nav overlay */}
-      {mobileOpen && (
-        <nav
-          className={cn(
-            "fixed inset-0 top-[60px] z-40",
-            "flex flex-col items-center gap-6 pt-12",
-            "bg-background/95 backdrop-blur-lg",
-            "md:hidden"
-          )}
-          aria-label="Mobile navigation"
+        <a
+          href="/Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-link"
         >
-          {navLinks.map((link) => {
-            const isActive =
-              link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
-
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={isActive ? "page" : undefined}
-                className={cn(
-                  "text-xl font-medium transition-colors",
-                  isActive ? "text-foreground" : "text-nav-inactive hover:text-foreground"
-                )}
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
-      )}
+          resume
+        </a>
+        <ThemeToggle />
+      </nav>
     </header>
   );
 }

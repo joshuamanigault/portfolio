@@ -12,10 +12,7 @@ export function Experience() {
 
       <div className="space-y-8">
         {experiences.map((exp, index) => (
-          <div
-            key={index}
-            className="experience-item grid grid-cols-[32px_minmax(0,1fr)] gap-x-3"
-          >
+          <div key={index} className="grid grid-cols-[32px_minmax(0,1fr)] gap-x-3">
             <div className="pt-0.5">
               {exp.logoSrc && (
                 <Image
@@ -30,17 +27,15 @@ export function Experience() {
 
             <div className="min-w-0">
               <div className="experience-header flex items-start justify-between gap-4">
-                <div className="experience-title min-w-0">
+                <div className="min-w-0">
                   <h3 className="text-foreground text-base font-medium">{exp.role}</h3>
                 </div>
                 <span className="experience-date text-muted-foreground text-sm whitespace-nowrap">
                   {exp.dateRange}
                 </span>
               </div>
-              <p className="experience-company text-muted-foreground mt-1 text-sm">
-                {exp.company}
-              </p>
-              <p className="experience-blurb text-muted-foreground mt-2 max-w-2xl text-sm leading-relaxed">
+              <p className="text-muted-foreground mt-1 text-sm">{exp.company}</p>
+              <p className="text-muted-foreground mt-2 max-w-2xl text-sm leading-relaxed">
                 {exp.description}
               </p>
             </div>

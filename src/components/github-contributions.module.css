@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--font-mono);
+  color: var(--color-muted);
+}
+
+.command {
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.githubLink {
+  flex-shrink: 0;
+  font-size: 12px;
+  line-height: 1.6;
+}

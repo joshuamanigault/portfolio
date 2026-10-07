@@ -1,28 +1,24 @@
-import { Section } from "@/components/section";
-
 export default function ProjectsLoading() {
   return (
-    <Section>
-      <div className="mb-10">
-        <div className="bg-border h-9 w-36 animate-pulse rounded-sm" />
-        <div className="bg-border mt-4 h-4 w-full max-w-md animate-pulse rounded-sm" />
-      </div>
-      <div className="space-y-0" aria-label="Loading projects">
+    <section
+      className="container-main projects-page"
+      aria-label="Loading projects"
+      aria-busy="true"
+    >
+      <h1>Projects</h1>
+      <p className="page-lead">Selected software and research work.</p>
+      <div className="project-entries">
         {[0, 1].map((item) => (
-          <div
-            key={item}
-            className="border-border grid gap-6 border-t py-8 md:grid-cols-[minmax(0,1fr)_13.5rem]"
-          >
-            <div className="space-y-4">
-              <div className="bg-border h-3 w-24 animate-pulse rounded-sm" />
-              <div className="bg-border h-6 w-52 animate-pulse rounded-sm" />
-              <div className="bg-border h-4 w-full animate-pulse rounded-sm" />
-              <div className="bg-border h-4 w-3/4 animate-pulse rounded-sm" />
+          <div key={item} className="project-entry" aria-hidden="true">
+            <div className="bg-surface aspect-[16/10] animate-pulse rounded-sm" />
+            <div className="space-y-3">
+              <div className="bg-border h-3 w-32 animate-pulse" />
+              <div className="bg-border h-6 w-48 animate-pulse" />
+              <div className="bg-border h-4 w-full animate-pulse" />
             </div>
-            <div className="bg-surface aspect-video animate-pulse rounded-md md:aspect-[4/3]" />
           </div>
         ))}
       </div>
-    </Section>
+    </section>
   );
 }

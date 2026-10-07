@@ -1,6 +1,5 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore, useCallback, useRef } from "react";
 
@@ -83,11 +82,8 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <button
-        className="text-nav-inactive hover:text-foreground inline-flex size-10 items-center justify-center rounded-full transition-colors active:scale-[0.98]"
-        aria-label="Toggle theme"
-      >
-        <Sun size={18} />
+      <button className="nav-link theme-toggle" aria-label="Toggle theme">
+        theme
       </button>
     );
   }
@@ -96,10 +92,10 @@ export function ThemeToggle() {
     <button
       ref={buttonRef}
       onClick={toggleTheme}
-      className="text-nav-inactive hover:text-foreground relative inline-flex size-10 items-center justify-center rounded-full transition-[color,transform] active:scale-[0.96]"
+      className="nav-link theme-toggle"
       aria-label={"Switch to " + (isDark ? "light" : "dark") + " theme"}
     >
-      {isDark ? <Sun size={18} /> : <Moon size={18} />}
+      {isDark ? "light" : "dark"}
     </button>
   );
 }

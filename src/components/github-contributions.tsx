@@ -1,4 +1,5 @@
 import { fetchGitHubContributions } from "@/lib/github";
+import styles from "./github-contributions.module.css";
 import {
   GitHubContributionsChart,
   GitHubContributionsLegend,
@@ -16,8 +17,22 @@ export async function GitHubContributions({
   const totalContributions = contributionData?.totalContributions;
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-foreground text-xl font-semibold">GitHub Contributions</h2>
+    <section className="space-y-4" aria-label="GitHub contributions">
+      <header className={styles.header}>
+        <h2 className={styles.command}>
+          <span aria-hidden="true">$ </span>
+          git log --stat
+        </h2>
+        <a
+          href={`https://github.com/${username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`nav-link ${styles.githubLink}`}
+          aria-label={`Visit ${username}'s GitHub profile`}
+        >
+          github <span aria-hidden="true">→</span>
+        </a>
+      </header>
 
       <GitHubContributionsChart username={username} />
 
@@ -29,6 +44,6 @@ export async function GitHubContributions({
             : "Contributions in the last year"}
         </p>
       </div>
-    </div>
+    </section>
   );
 }

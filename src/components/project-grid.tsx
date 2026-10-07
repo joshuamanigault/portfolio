@@ -1,8 +1,8 @@
 import { ProjectCard } from "@/components/project-card";
-import type { ProjectWithMeta } from "@/data/types";
+import type { Project } from "@/data/types";
 
 interface ProjectGridProps {
-  projects: ProjectWithMeta[];
+  projects: Project[];
 }
 
 export function ProjectGrid({ projects }: ProjectGridProps) {
@@ -18,9 +18,9 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-6">
-      {projects.map((project, index) => (
-        <ProjectCard key={project.slug} project={project} index={index} />
+    <div className="project-entries">
+      {projects.map((project) => (
+        <ProjectCard key={project.slug} project={project} />
       ))}
     </div>
   );
