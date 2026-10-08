@@ -15,4 +15,4 @@ export const siteConfig: SiteConfig = {
 };
 
 export const positioningStatement =
-  "I study Computer Science at Arizona State University and build stuff just to build it.";
+  "I'm a Computer Science student at Arizona State University, graduating in May 2028. I'm also a Career Preparation Fellow with Management Leadership for Tomorrow. I build stuff just to build it.";

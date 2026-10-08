@@ -8,14 +8,13 @@ export default async function HomePage() {
   return (
     <div className="container-main home-page">
       <header className="mb-16">
-        <h1 className="home-about-heading">about me</h1>
         <div className="home-intro text-muted-foreground">
           <p>{positioningStatement}</p>
           <p>
-            I currently work as a Student Researcher at The Luminosity Lab.
-            Previously, I interned as a Software Engineer at Raytheon and Cita
-            Marketplace, working on test processes and building features for
-            sellers.
+            I currently work as a Student Researcher at The Luminosity Lab,
+            building tools that help students learn robotics. Previously, I
+            interned as a Software Engineer at Raytheon and Cita Marketplace,
+            working on test automation and web applications.
           </p>
           <p>
             I also{" "}
@@ -35,7 +34,9 @@ export default async function HomePage() {
               ASU ProfessorView
             </Link>
             , a browser extension that brings professor reviews directly into
-            ASU&apos;s class search.
+            ASU&apos;s class search. Beyond coding, I co-founded It Starts With Us,
+            a volunteer organization supporting students through tutoring and
+            mentorship.
           </p>
         </div>
         <nav aria-label="About me social and contact links" className="home-links">
