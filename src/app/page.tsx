@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteConfig, positioningStatement } from "@/data/site";
+import { siteConfig } from "@/data/site";
 import { GitHubContributions } from "@/components/github-contributions";
 import { Experience } from "@/components/experience";
 import { ResumeLink } from "@/components/resume-link";
@@ -9,12 +9,15 @@ export default async function HomePage() {
     <div className="container-main home-page">
       <header className="mb-16">
         <div className="home-intro text-muted-foreground">
-          <p>{positioningStatement}</p>
           <p>
-            I currently work as a Student Researcher at The Luminosity Lab,
-            building tools that help students learn robotics. Previously, I
-            interned as a Software Engineer at Raytheon and Cita Marketplace,
-            working on test automation and web applications.
+            I'm currently a junior studying Computer Science at Arizona State University.
+          </p>
+          <p>
+            I currently work as a Student Researcher at The Luminosity Lab, assiting 
+            in the development of an innovative educational robotics platform. Previously, I
+            interned as a Software Engineer at Raytheon where I utilized C++ to support
+            and enhance hardware test stations, as well as develop an internal automation tool to streamline
+            reporting processes using Python.
           </p>
           <p>
             I also{" "}
