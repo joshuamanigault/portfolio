@@ -8,27 +8,57 @@ export default async function HomePage() {
   return (
     <div className="container-main home-page">
       <header className="mb-16">
-        <p className="home-role">Student Researcher at The Luminosity Lab</p>
-        <p className="home-intro text-muted-foreground">
-          {positioningStatement} I also{" "}
+        <h1 className="home-about-heading">about me</h1>
+        <div className="home-intro text-muted-foreground">
+          <p>{positioningStatement}</p>
+          <p>
+            I currently work as a Student Researcher at The Luminosity Lab.
+            Previously, I interned as a Software Engineer at Raytheon and Cita
+            Marketplace, working on test processes and building features for
+            sellers.
+          </p>
+          <p>
+            I also{" "}
+            <a
+              href="https://www.tiktok.com/@joshdoescode"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground underline underline-offset-4 transition-colors"
+            >
+              make CS videos
+            </a>{" "}
+            and build projects like{" "}
+            <Link
+              href="/projects/asu-professorview"
+              className="hover:text-foreground underline underline-offset-4 transition-colors"
+            >
+              ASU ProfessorView
+            </Link>
+            , a browser extension that brings professor reviews directly into
+            ASU&apos;s class search.
+          </p>
+        </div>
+        <nav aria-label="About me social and contact links" className="home-links">
           <a
-            href="https://www.tiktok.com/@joshdoescode"
+            href={siteConfig.socials.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground underline underline-offset-4 transition-colors"
+            className="nav-link"
           >
-            make CS videos
+            LinkedIn
           </a>
-          .
-        </p>
-        <div className="home-links">
-          <Link href="/projects" className="nav-link">
-            View projects
-          </Link>
+          <a
+            href={siteConfig.socials.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-link"
+          >
+            GitHub
+          </a>
           <a href={siteConfig.socials.email} className="nav-link">
-            Get in touch
+            Email
           </a>
-        </div>
+        </nav>
       </header>
       <Experience />
       <section className="mb-16">
