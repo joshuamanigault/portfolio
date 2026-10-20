@@ -13,6 +13,3 @@ export const siteConfig: SiteConfig = {
     email: "mailto:n.joshuamanigault@gmail.com",
   },
 };
-
-export const positioningStatement =
-  "I study Computer Science at Arizona State University and build stuff just to build it.";
