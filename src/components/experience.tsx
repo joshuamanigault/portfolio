@@ -8,7 +8,7 @@ export function Experience() {
       className={cn("mb-16", "animate-fade-in opacity-0")}
       style={{ animationDelay: "150ms", animationFillMode: "forwards" }}
     >
-      <h2 className="text-foreground mb-8 text-xl font-semibold">Experience</h2>
+      <h2 className="text-foreground mb-8 text-xl font-semibold">work</h2>
 
       <div className="space-y-8">
         {experiences.map((exp, index) => (
