@@ -1,7 +1,16 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { cloneElement, useEffect, useId, useState, useSyncExternalStore } from "react";
+import {
+  cloneElement,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type ReactElement,
+  type SVGProps,
+} from "react";
 import { createPortal } from "react-dom";
 import { GitHubCalendar } from "react-github-calendar";
 import styles from "./github-contributions.module.css";
@@ -40,6 +49,8 @@ interface GitHubContributionsClientProps {
 
 export function GitHubContributionsChart({ username }: GitHubContributionsClientProps) {
   const tooltipId = useId();
+  const chartRef = useRef<HTMLDivElement>(null);
+  const [revealed, setRevealed] = useState(false);
   const [tooltip, setTooltip] = useState<{
     date: string;
     count: number;
@@ -65,6 +76,22 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
 
   const isDark = mounted && resolvedTheme === "dark";
 
+  useEffect(() => {
+    const chart = chartRef.current;
+    if (!chart) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(chart);
+    return () => observer.disconnect();
+  }, [mounted]);
+
   // Don't render until mounted to avoid hydration mismatch
   if (!mounted) {
     return (
@@ -76,7 +103,9 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
 
   return (
     <div
-      className="border-border bg-card rounded-md border p-4"
+      ref={chartRef}
+      className={`border-border bg-card rounded-md border p-4 ${styles.chart}`}
+      data-revealed={revealed}
       tabIndex={focusedDate ? -1 : 0}
       aria-label="Daily GitHub contributions. Use arrow keys to explore days."
       onFocus={(event) => {
@@ -99,6 +128,8 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
         showColorLegend={false}
         showTotalCount={false}
         renderBlock={(block, activity) => {
+          // Loading placeholders have their own pulse animation and no real counts.
+          if (block.props.style?.animation) return block;
           const date = dateFormatter.format(new Date(`${activity.date}T00:00:00Z`));
           const label = `${activity.count} ${activity.count === 1 ? "contribution" : "contributions"}`;
           const showTooltip = (element: SVGRectElement) => {
@@ -113,8 +144,19 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
               top: rect.top > 100 ? rect.top - 90 : rect.bottom + 12,
             });
           };
-          return cloneElement(block, {
+          return cloneElement(block as ReactElement<SVGProps<SVGRectElement>>, {
             className: styles.day,
+            ref: (element: SVGRectElement | null) => {
+              if (!element) return;
+              // The calendar places each week in a translated SVG group.
+              const column = element.parentElement
+                ?.getAttribute("transform")
+                ?.match(/translate\(([\d.]+)/)?.[1];
+              element.style.setProperty(
+                "--reveal-delay",
+                `${(Number(column ?? 0) / 14) * 18}ms`
+              );
+            },
             tabIndex: focusedDate === activity.date ? 0 : -1,
             "aria-label": `${label} on ${date}`,
             "aria-describedby": tooltip?.date === activity.date ? tooltipId : undefined,

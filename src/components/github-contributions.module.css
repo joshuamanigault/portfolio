@@ -23,9 +23,38 @@
   cursor: pointer;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .chart[data-revealed="false"] .day {
+    opacity: 0;
+  }
+
+  .chart[data-revealed="true"] .day {
+    transform-box: fill-box;
+    transform-origin: left center;
+    animation: roll-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+
+  .chart .day:focus-visible {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+@keyframes roll-in {
+  from {
+    opacity: 0;
+    transform: translateX(-5px) scaleX(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scaleX(1);
+  }
+}
+
 .day:hover,
 .day:focus-visible {
-  stroke: var(--color-foreground);
+  stroke: var(--color-foreground) !important;
   stroke-width: 1.5px;
   outline: none;
 }
