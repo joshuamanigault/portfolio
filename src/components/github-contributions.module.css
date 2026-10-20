@@ -1,24 +1,33 @@
-.header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  font-family: var(--font-mono);
+.chart {
+  width: 100%;
+}
+
+.chart :global(.react-activity-calendar) {
+  width: 100% !important;
+}
+
+.chart :global(.react-activity-calendar__scroll-container) {
+  overflow: visible !important;
+  padding: 0;
+}
+
+/* Preserve all weeks on narrow screens by scaling the SVG's existing viewBox. */
+.chart :global(.react-activity-calendar__calendar) {
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.chart :global(.react-activity-calendar__footer) {
+  margin-top: 8px;
   color: var(--color-muted);
-}
-
-.command {
   font-size: 14px;
-  line-height: 1.6;
-  font-weight: 400;
 }
 
-.githubLink {
-  flex-shrink: 0;
-  font-size: 12px;
-  line-height: 1.6;
+.placeholder {
+  width: 100%;
+  aspect-ratio: 739 / 95;
 }
-
 .day {
   cursor: pointer;
 }

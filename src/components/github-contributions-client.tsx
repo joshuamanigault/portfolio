@@ -95,8 +95,8 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
   // Don't render until mounted to avoid hydration mismatch
   if (!mounted) {
     return (
-      <div className="border-border bg-card rounded-md border p-4">
-        <div className="bg-muted min-h-[150px] w-full animate-pulse rounded-sm" />
+      <div className={styles.placeholder}>
+        <div className="bg-muted h-full w-full animate-pulse rounded-sm" />
       </div>
     );
   }
@@ -104,7 +104,7 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
   return (
     <div
       ref={chartRef}
-      className={`border-border bg-card rounded-md border p-4 ${styles.chart}`}
+      className={styles.chart}
       data-revealed={revealed}
       tabIndex={focusedDate ? -1 : 0}
       aria-label="Daily GitHub contributions. Use arrow keys to explore days."
@@ -123,10 +123,12 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
           dark: THEME_COLORS_DARK,
         }}
         blockSize={11}
+        blockRadius={5.5}
         blockMargin={3}
         fontSize={12}
         showColorLegend={false}
-        showTotalCount={false}
+        showMonthLabels={false}
+        showTotalCount={true}
         renderBlock={(block, activity) => {
           // Loading placeholders have their own pulse animation and no real counts.
           if (block.props.style?.animation) return block;
@@ -209,28 +211,6 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
           </div>,
           document.body
         )}
-    </div>
-  );
-}
-
-export function GitHubContributionsLegend() {
-  const { resolvedTheme } = useTheme();
-  const mounted = useSyncExternalStore(
-    emptySubscribe,
-    () => true,
-    () => false
-  );
-
-  const isDark = mounted && resolvedTheme === "dark";
-  const legendColors = isDark ? THEME_COLORS_DARK : THEME_COLORS_LIGHT;
-
-  return (
-    <div className="flex items-center gap-1">
-      <span className="text-muted text-xs">Less</span>
-      {legendColors.map((color, i) => (
-        <div key={i} className="h-3 w-3 rounded" style={{ backgroundColor: color }} />
-      ))}
-      <span className="text-muted text-xs">More</span>
     </div>
   );
 }
