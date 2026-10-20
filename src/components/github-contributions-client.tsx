@@ -1,8 +1,18 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useSyncExternalStore } from "react";
+import { cloneElement, useEffect, useId, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { GitHubCalendar } from "react-github-calendar";
+import styles from "./github-contributions.module.css";
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  weekday: "short",
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+});
 
 // Track mount state without useEffect + setState
 const emptySubscribe = () => () => {};
@@ -29,6 +39,23 @@ interface GitHubContributionsClientProps {
 }
 
 export function GitHubContributionsChart({ username }: GitHubContributionsClientProps) {
+  const tooltipId = useId();
+  const [tooltip, setTooltip] = useState<{
+    date: string;
+    count: number;
+    left: number;
+    top: number;
+  } | null>(null);
+  const [focusedDate, setFocusedDate] = useState<string | null>(null);
+  useEffect(() => {
+    const dismiss = () => setTooltip(null);
+    window.addEventListener("scroll", dismiss, true);
+    window.addEventListener("resize", dismiss);
+    return () => {
+      window.removeEventListener("scroll", dismiss, true);
+      window.removeEventListener("resize", dismiss);
+    };
+  }, []);
   const { resolvedTheme } = useTheme();
   const mounted = useSyncExternalStore(
     emptySubscribe,
@@ -48,7 +75,17 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
   }
 
   return (
-    <div className="border-border bg-card rounded-md border p-4">
+    <div
+      className="border-border bg-card rounded-md border p-4"
+      tabIndex={focusedDate ? -1 : 0}
+      aria-label="Daily GitHub contributions. Use arrow keys to explore days."
+      onFocus={(event) => {
+        if (event.target === event.currentTarget)
+          event.currentTarget.querySelector<SVGRectElement>("rect[data-date]")?.focus();
+      }}
+      onPointerLeave={() => setTooltip(null)}
+      onScrollCapture={() => setTooltip(null)}
+    >
       <GitHubCalendar
         username={username}
         colorScheme={isDark ? "dark" : "light"}
@@ -61,7 +98,75 @@ export function GitHubContributionsChart({ username }: GitHubContributionsClient
         fontSize={12}
         showColorLegend={false}
         showTotalCount={false}
+        renderBlock={(block, activity) => {
+          const date = dateFormatter.format(new Date(`${activity.date}T00:00:00Z`));
+          const label = `${activity.count} ${activity.count === 1 ? "contribution" : "contributions"}`;
+          const showTooltip = (element: SVGRectElement) => {
+            const rect = element.getBoundingClientRect();
+            setTooltip({
+              date: activity.date,
+              count: activity.count,
+              left: Math.max(
+                8,
+                Math.min(rect.left + rect.width / 2 - 100, window.innerWidth - 208)
+              ),
+              top: rect.top > 100 ? rect.top - 90 : rect.bottom + 12,
+            });
+          };
+          return cloneElement(block, {
+            className: styles.day,
+            tabIndex: focusedDate === activity.date ? 0 : -1,
+            "aria-label": `${label} on ${date}`,
+            "aria-describedby": tooltip?.date === activity.date ? tooltipId : undefined,
+            onPointerEnter: (event) => showTooltip(event.currentTarget),
+            onClick: (event) => showTooltip(event.currentTarget),
+            onFocus: (event) => {
+              setFocusedDate(activity.date);
+              showTooltip(event.currentTarget);
+            },
+            onBlur: () => setTooltip(null),
+            onKeyDown: (event) => {
+              if (event.key === "Escape") {
+                setTooltip(null);
+                return;
+              }
+              const offsets: Record<string, number> = {
+                ArrowLeft: -7,
+                ArrowRight: 7,
+                ArrowUp: -1,
+                ArrowDown: 1,
+              };
+              if (!(event.key in offsets)) return;
+              event.preventDefault();
+              const target = new Date(`${activity.date}T00:00:00Z`);
+              target.setUTCDate(target.getUTCDate() + offsets[event.key]);
+              event.currentTarget
+                .closest("svg")
+                ?.querySelector<SVGRectElement>(
+                  `[data-date="${target.toISOString().slice(0, 10)}"]`
+                )
+                ?.focus();
+            },
+          });
+        }}
       />
+      {tooltip &&
+        createPortal(
+          <div
+            id={tooltipId}
+            role="tooltip"
+            className={styles.tooltip}
+            style={{ left: tooltip.left, top: tooltip.top }}
+          >
+            <strong>
+              {tooltip.count} {tooltip.count === 1 ? "contribution" : "contributions"}
+            </strong>
+            <time dateTime={tooltip.date}>
+              {dateFormatter.format(new Date(`${tooltip.date}T00:00:00Z`))}
+            </time>
+          </div>,
+          document.body
+        )}
     </div>
   );
 }
