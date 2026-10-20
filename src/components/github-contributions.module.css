@@ -1,37 +1,56 @@
 .chart {
   width: 100%;
+  container-type: inline-size;
 }
 
-.chart :global(.react-activity-calendar) {
-  width: 100% !important;
+.weeks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10px, 1fr));
+  gap: 20px 3px;
+  align-items: start;
 }
 
-.chart :global(.react-activity-calendar__scroll-container) {
-  overflow: visible !important;
-  padding: 0;
+.week {
+  display: grid;
+  gap: 3px;
+  align-content: start;
 }
 
-/* Preserve all weeks on narrow screens by scaling the SVG's existing viewBox. */
-.chart :global(.react-activity-calendar__calendar) {
+.day,
+.week > span {
   width: 100%;
-  height: auto;
-  margin: 0;
+  aspect-ratio: 1;
 }
 
-.chart :global(.react-activity-calendar__footer) {
-  margin-top: 8px;
+.day {
+  display: block;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Reflow whole weeks instead of shrinking a full-year SVG on small screens. */
+@container (max-width: 600px) {
+  .weeks {
+    grid-template-columns: repeat(auto-fill, minmax(14px, 1fr));
+    column-gap: 4px;
+  }
+  .week {
+    gap: 4px;
+  }
+}
+
+.total {
+  margin-top: 16px;
   color: var(--color-muted);
   font-size: 14px;
 }
 
 .placeholder {
-  width: 100%;
-  aspect-ratio: 739 / 95;
+  min-height: 100px;
+  background: var(--color-surface);
 }
-.day {
-  cursor: pointer;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .chart[data-revealed="false"] .day {
     opacity: 0;
@@ -63,9 +82,8 @@
 
 .day:hover,
 .day:focus-visible {
-  stroke: var(--color-foreground) !important;
-  stroke-width: 1.5px;
-  outline: none;
+  outline: 1.5px solid var(--color-foreground);
+  outline-offset: 1px;
 }
 
 .tooltip {
