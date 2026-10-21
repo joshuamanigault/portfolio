@@ -5,14 +5,15 @@
 
 .weeks {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(10px, 1fr));
-  gap: 20px 3px;
+  grid-template-columns: repeat(var(--week-count), minmax(0, 1fr));
+  gap: clamp(1px, 0.4cqw, 3px);
   align-items: start;
 }
 
 .week {
   display: grid;
-  gap: 3px;
+  min-width: 0;
+  gap: clamp(1px, 0.4cqw, 3px);
   align-content: start;
 }
 
@@ -24,21 +25,12 @@
 
 .day {
   display: block;
+  min-width: 0;
+  min-height: 0;
   padding: 0;
   border: 0;
   border-radius: 50%;
   cursor: pointer;
-}
-
-/* Reflow whole weeks instead of shrinking a full-year SVG on small screens. */
-@container (max-width: 600px) {
-  .weeks {
-    grid-template-columns: repeat(auto-fill, minmax(14px, 1fr));
-    column-gap: 4px;
-  }
-  .week {
-    gap: 4px;
-  }
 }
 
 .total {

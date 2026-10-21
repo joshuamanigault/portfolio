@@ -13,7 +13,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
   timeZone: "UTC",
 });
-const lightColors = ["#ebedf0", "#b8e4b8", "#7ac87a", "#50b050", "#40a050"];
+const lightColors = ["#b8b8b8", "#b8e4b8", "#7ac87a", "#50b050", "#40a050"];
 const darkColors = ["#1a1a1a", "#2a5a2a", "#3a7a3a", "#4aba5a", "#5ada6a"];
 
 export function GitHubContributionsChart({ username }: { username: string }) {
@@ -129,7 +129,12 @@ export function GitHubContributionsChart({ username }: { username: string }) {
   };
 
   return (
-    <div ref={chartRef} className={styles.chart} data-revealed={revealed}>
+    <div
+      ref={chartRef}
+      className={styles.chart}
+      data-revealed={revealed}
+      style={{ "--week-count": weeks.length } as CSSProperties}
+    >
       <div
         className={styles.weeks}
         aria-label="Daily GitHub contributions. Use arrow keys to explore days."
