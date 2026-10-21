@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  /* Color palette - preserving the original grayscale + lightblue accent */
-  --color-background: #eeeeee;
+  /* Light palette - soft cream neutrals with the original lightblue accent */
+  --color-background: #f3f0e8;
   --color-foreground: #02020a;
   --color-muted: #676767;
   --color-muted-foreground: #343434;
-  --color-border: #c4c4c4;
-  --color-card: #f5f5f5;
+  --color-border: #ccc7bc;
+  --color-card: #f8f5ed;
   --color-card-foreground: #555555;
   --color-accent: #a8d8ea;
   --color-resume-fill: #121214;
-  --color-resume-foreground: #eeeeee;
-  --color-surface: #dadada;
+  --color-resume-foreground: #f3f0e8;
+  --color-surface: #e1dcd1;
 
   /* Dark mode colors - darker grey palette */
   --color-dark-background: #121214;
