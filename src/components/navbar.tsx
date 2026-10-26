@@ -22,6 +22,9 @@ export function Navbar() {
         >
           projects
         </Link>
+        <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer" className="nav-link">
+          resume
+        </a>
         <ThemeToggle />
       </nav>
     </header>

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { siteConfig } from "@/data/site";
 import { GitHubContributions } from "@/components/github-contributions";
 import { Experience } from "@/components/experience";
 
@@ -41,27 +40,6 @@ export default async function HomePage() {
             mentorship.
           </p>
         </div>
-        <nav aria-label="About me social and contact links" className="home-links">
-          <a
-            href={siteConfig.socials.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-link"
-          >
-            LinkedIn
-          </a>
-          <a
-            href={siteConfig.socials.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-link"
-          >
-            GitHub
-          </a>
-          <a href={siteConfig.socials.email} className="nav-link">
-            Email
-          </a>
-        </nav>
       </header>
       <Experience />
       <GitHubContributions />
