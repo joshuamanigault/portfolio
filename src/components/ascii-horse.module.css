@@ -1,0 +1,58 @@
+.horse {
+  display: flex;
+  min-width: 0;
+  align-items: flex-end;
+  justify-content: flex-end;
+  color: var(--color-foreground);
+}
+
+.stage {
+  display: grid;
+  inline-size: 28ch;
+  block-size: 8lh;
+  font: 500 clamp(7px, 1.3vw, 10px) / 0.92 var(--font-mono);
+  font-variant-ligatures: none;
+  letter-spacing: 0;
+}
+
+.frame {
+  grid-area: 1 / 1;
+  margin: 0;
+  white-space: pre;
+  opacity: 0;
+  animation: horse-frame 800ms step-end infinite;
+  animation-delay: calc(var(--frame-index) * 100ms);
+}
+
+.frame:nth-child(3n + 2),
+.frame:nth-child(3n + 3) {
+  --horse-bob: -1px;
+}
+
+@keyframes horse-frame {
+  0%,
+  12.49% {
+    opacity: 1;
+    transform: translateY(var(--horse-bob, 0));
+  }
+
+  12.5%,
+  100% {
+    opacity: 0;
+    transform: translateY(var(--horse-bob, 0));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame {
+    display: none;
+    animation: none !important;
+    opacity: 0;
+    transform: none !important;
+  }
+
+  .frame:first-child {
+    display: block;
+    opacity: 1;
+  }
+}
