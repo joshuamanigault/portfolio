@@ -8,9 +8,9 @@
 
 .stage {
   display: grid;
-  inline-size: 28ch;
-  block-size: 8lh;
-  font: 500 clamp(7px, 1.3vw, 10px) / 0.92 var(--font-mono);
+  inline-size: 32ch;
+  block-size: 11lh;
+  font: 400 8.8px / 1.05 var(--font-mono);
   font-variant-ligatures: none;
   letter-spacing: 0;
 }
@@ -20,26 +20,19 @@
   margin: 0;
   white-space: pre;
   opacity: 0;
-  animation: horse-frame 800ms step-end infinite;
-  animation-delay: calc(var(--frame-index) * 100ms);
-}
-
-.frame:nth-child(3n + 2),
-.frame:nth-child(3n + 3) {
-  --horse-bob: -1px;
+  font: inherit;
+  animation: horse-frame 1000ms step-end infinite;
+  animation-delay: calc((var(--frame-index) / 15 - 1) * 1000ms);
 }
 
 @keyframes horse-frame {
-  0%,
-  12.49% {
+  0% {
     opacity: 1;
-    transform: translateY(var(--horse-bob, 0));
   }
 
-  12.5%,
+  6.666667%,
   100% {
     opacity: 0;
-    transform: translateY(var(--horse-bob, 0));
   }
 }
 
