@@ -10,8 +10,6 @@
   --color-card: #f8f5ed;
   --color-card-foreground: #555555;
   --color-accent: #a8d8ea;
-  --color-resume-fill: #121214;
-  --color-resume-foreground: #f3f0e8;
   --color-surface: #e1dcd1;
 
   /* Dark mode colors - darker grey palette */
@@ -76,8 +74,6 @@
   --color-card: var(--color-dark-card);
   --color-card-foreground: var(--color-dark-card-foreground);
   --color-accent: var(--color-dark-accent);
-  --color-resume-fill: #eeeeee;
-  --color-resume-foreground: #121214;
   --color-surface: var(--color-dark-surface);
 }
 

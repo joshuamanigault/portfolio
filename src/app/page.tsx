@@ -2,7 +2,6 @@ import Link from "next/link";
 import { siteConfig } from "@/data/site";
 import { GitHubContributions } from "@/components/github-contributions";
 import { Experience } from "@/components/experience";
-import { ResumeLink } from "@/components/resume-link";
 
 export default async function HomePage() {
   return (
@@ -67,9 +66,6 @@ export default async function HomePage() {
       <Experience />
       <section className="mb-16">
         <GitHubContributions />
-      </section>
-      <section className="flex justify-center pt-10">
-        <ResumeLink href="/Resume.pdf" />
       </section>
     </div>
   );

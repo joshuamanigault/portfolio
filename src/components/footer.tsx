@@ -6,7 +6,6 @@ const links = [
   { label: "linkedin", href: siteConfig.socials.linkedin },
   { label: "tiktok", href: "https://www.tiktok.com/@joshdoescode" },
   { label: "email", href: siteConfig.socials.email },
-  { label: "resume", href: "/Resume.pdf" },
 ];
 
 export function Footer() {
