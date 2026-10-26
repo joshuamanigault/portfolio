@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 export function Experience() {
   return (
     <section
-      className={cn("mb-16", "animate-fade-in opacity-0")}
+      className={cn("home-section", "animate-fade-in opacity-0")}
       style={{ animationDelay: "150ms", animationFillMode: "forwards" }}
     >
       <h2 className="text-foreground mb-8 text-xl font-semibold">work</h2>

@@ -452,6 +452,11 @@
 .home-page {
   margin-top: 96px;
 }
+.home-section {
+  padding-top: 52px;
+  padding-bottom: 72px;
+  border-top: 1px solid var(--color-border);
+}
 .home-intro {
   font-size: 18px;
   font-weight: 300;
@@ -561,6 +566,10 @@
   .projects-page,
   .project-detail-page {
     margin-top: 64px;
+  }
+  .home-section {
+    padding-top: 44px;
+    padding-bottom: 60px;
   }
   .project-entries {
     gap: 40px;

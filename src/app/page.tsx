@@ -64,9 +64,7 @@ export default async function HomePage() {
         </nav>
       </header>
       <Experience />
-      <section className="mb-16">
-        <GitHubContributions />
-      </section>
+      <GitHubContributions />
     </div>
   );
 }
