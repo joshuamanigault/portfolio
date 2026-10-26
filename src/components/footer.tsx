@@ -3,6 +3,7 @@
 import { Fragment } from "react";
 import { usePathname } from "next/navigation";
 import { AsciiHorse } from "@/components/ascii-horse";
+import { CopyEmailButton } from "@/components/copy-email-button";
 import { siteConfig } from "@/data/site";
 
 const siteLinks = [
@@ -51,6 +52,7 @@ function LandingFooter() {
                     >
                       {text}
                     </a>
+                    {label === "email" && <CopyEmailButton email={siteConfig.email} />}
                   </dd>
                 </div>
               ))}
