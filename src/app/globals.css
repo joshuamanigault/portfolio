@@ -256,6 +256,10 @@
   font: 10px/1.6 var(--font-mono);
 }
 .theme-toggle {
+  /* Reserve space for "light" and the initial "theme" label. */
+  inline-size: 5ch;
+  flex-shrink: 0;
+  text-align: right;
   font: inherit;
   background: none;
   border: 0;
