@@ -69,7 +69,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               }
               fill
               priority
-              sizes="(min-width: 1440px) 896px, (min-width: 1181px) calc(100vw - 544px), (min-width: 768px) 720px, calc(100vw - 36px)"
+              sizes="(min-width: 1552px) 960px, (min-width: 1264px) calc(100vw - 592px), (min-width: 720px) 672px, (min-width: 481px) calc(100vw - 48px), calc(100vw - 36px)"
             />
           </figure>
         )}

@@ -60,7 +60,8 @@
 /* Utility classes */
 @layer utilities {
   .container-main {
-    @apply mx-auto w-full max-w-[768px] px-6;
+    @apply mx-auto w-full px-6;
+    max-width: 720px;
   }
 }
 
@@ -501,7 +502,7 @@
 
 @media (min-width: 1181px) {
   .project-reader {
-    --project-bleed: max(720px, min(1040px, calc(100vw - 544px)));
+    --project-bleed: max(672px, min(960px, calc(100vw - 592px)));
   }
 }
 @media (max-width: 1180px) {

@@ -103,8 +103,8 @@
 
 @media (min-width: 1024px) and (min-height: 600px) and (prefers-reduced-motion: no-preference) {
   .showcase[data-enhanced="true"] {
-    --split: min(1120px, calc(100vw - 48px));
-    --media-height: calc((var(--split) - 400px) * 9 / 16);
+    --split: min(1024px, calc(100vw - 48px));
+    --media-height: calc((var(--split) - 352px) * 9 / 16);
     --rest-top: calc(50vh - var(--media-height) / 2);
   }
 
@@ -119,8 +119,8 @@
 
   [data-enhanced="true"] .sequence {
     display: grid;
-    grid-template-columns: 320px minmax(0, 1fr);
-    gap: 80px;
+    grid-template-columns: 288px minmax(0, 1fr);
+    gap: 64px;
     width: var(--split);
     margin-inline: calc((100% - var(--split)) / 2);
   }

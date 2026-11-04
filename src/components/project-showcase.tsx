@@ -138,7 +138,7 @@ export function ProjectShowcase({ projects }: { projects: Project[] }) {
                     src={project.images[0]}
                     alt={`${project.title} preview`}
                     fill
-                    sizes="(min-width: 1168px) 720px, (min-width: 1024px) calc(100vw - 448px), (min-width: 768px) 720px, calc(100vw - 36px)"
+                    sizes="(min-width: 1072px) 672px, (min-width: 1024px) calc(100vw - 400px), (min-width: 720px) 672px, (min-width: 481px) calc(100vw - 48px), calc(100vw - 36px)"
                   />
                 )}
               </Link>
