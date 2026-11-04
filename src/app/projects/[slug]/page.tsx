@@ -114,7 +114,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </section>
         </div>
         <nav className="project-pagination" aria-label="More projects">
-          <Link href="/projects" className="nav-link">
+          <Link href="/#projects" className="nav-link">
             All projects
           </Link>
           {nextProject.slug !== slug && (
