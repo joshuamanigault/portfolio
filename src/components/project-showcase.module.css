@@ -9,7 +9,10 @@
   color: var(--color-foreground);
   font-size: 20px;
   font-weight: 500;
-  transition: opacity 250ms var(--showcase-ease-out);
+  filter: blur(0);
+  transition:
+    opacity 500ms var(--showcase-ease-out),
+    filter 500ms var(--showcase-ease-out);
 }
 
 .sidebar {
@@ -111,6 +114,7 @@
 
   [data-enhanced="true"] .heading[data-pinned="true"] {
     opacity: 0;
+    filter: blur(6px);
   }
 
   [data-enhanced="true"] .sequence {
@@ -134,12 +138,17 @@
     grid-column: 1;
     grid-row: 1;
     opacity: 0;
+    filter: blur(6px);
     pointer-events: none;
-    transition: opacity 250ms var(--showcase-ease-out);
+    will-change: opacity, filter;
+    transition:
+      opacity 700ms var(--showcase-ease-out),
+      filter 700ms var(--showcase-ease-out);
   }
 
   .details[data-active="true"] {
     opacity: 1;
+    filter: blur(0);
     pointer-events: auto;
   }
 
