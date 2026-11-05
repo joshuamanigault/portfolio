@@ -9,6 +9,7 @@ import {
   getProjectSummary,
 } from "@/data/projects";
 import { ProjectToc } from "@/components/project-toc";
+import { ViewportVideo } from "@/components/viewport-video";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -64,14 +65,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               rel="noopener noreferrer"
               aria-label={`Open ${project.title} in the Chrome Web Store`}
             >
-              <video
+              <ViewportVideo
                 src={project.videoUrl}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label={`${project.title} demo`}
+                label={`${project.title} demo`}
               />
             </a>
           </figure>

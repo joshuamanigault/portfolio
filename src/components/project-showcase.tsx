@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { Project } from "@/data/types";
+import { ViewportVideo } from "@/components/viewport-video";
 import styles from "./project-showcase.module.css";
 
 function ProjectDetails({ project }: { project: Project }) {
@@ -136,14 +137,9 @@ export function ProjectShowcase({ projects }: { projects: Project[] }) {
                   rel="noopener noreferrer"
                   aria-label={`Open ${project.title} in the Chrome Web Store`}
                 >
-                  <video
+                  <ViewportVideo
                     src={project.videoUrl}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    aria-label={`${project.title} demo`}
+                    label={`${project.title} demo`}
                   />
                 </a>
               ) : (
