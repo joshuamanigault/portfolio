@@ -12,7 +12,7 @@ export const projects: Project[] = [
     liveUrl:
       "https://chromewebstore.google.com/detail/asu-professorview/kniajfafepienoohdheheofabfclpgnl",
     images: ["/images/projects/ASU ProfessorView.png"],
-    videoUrl: "/videos/asu-professorview-demo.mp4",
+    videoUrl: "/videos/asu-professorview-demov2.mp4",
     category: "fullstack",
     dates: {
       started: "2025-10",
