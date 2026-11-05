@@ -127,21 +127,42 @@ export function ProjectShowcase({ projects }: { projects: Project[] }) {
               className={styles.entry}
               aria-label={project.title}
             >
-              <Link
-                href={`/projects/${project.slug}`}
-                className={`${styles.media} ${project.slug === "asu-professorview" ? styles.logo : ""}`}
-                data-project-media
-                aria-label={`Read about ${project.title}`}
-              >
-                {project.images[0] && (
-                  <Image
-                    src={project.images[0]}
-                    alt={`${project.title} preview`}
-                    fill
-                    sizes="(min-width: 1072px) 672px, (min-width: 1024px) calc(100vw - 400px), (min-width: 720px) 672px, (min-width: 481px) calc(100vw - 48px), calc(100vw - 36px)"
+              {project.videoUrl ? (
+                <a
+                  href={project.liveUrl ?? `/projects/${project.slug}`}
+                  className={styles.media}
+                  data-project-media
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${project.title} in the Chrome Web Store`}
+                >
+                  <video
+                    src={project.videoUrl}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label={`${project.title} demo`}
                   />
-                )}
-              </Link>
+                </a>
+              ) : (
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className={`${styles.media} ${project.slug === "asu-professorview" ? styles.logo : ""}`}
+                  data-project-media
+                  aria-label={`Read about ${project.title}`}
+                >
+                  {project.images[0] && (
+                    <Image
+                      src={project.images[0]}
+                      alt={`${project.title} preview`}
+                      fill
+                      sizes="(min-width: 1072px) 672px, (min-width: 1024px) calc(100vw - 400px), (min-width: 720px) 672px, (min-width: 481px) calc(100vw - 48px), calc(100vw - 36px)"
+                    />
+                  )}
+                </Link>
+              )}
               <div className={styles.inlineDetails}>
                 <ProjectDetails project={project} />
               </div>

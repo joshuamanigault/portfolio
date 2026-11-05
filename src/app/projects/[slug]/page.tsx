@@ -56,22 +56,43 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <p>{summary.tagline}</p>
         </header>
 
-        {image && (
-          <figure
-            className={`project-hero-image ${slug === "asu-professorview" ? "project-hero-logo" : ""}`}
-          >
-            <Image
-              src={image}
-              alt={
-                slug === "asu-professorview"
-                  ? "ASU ProfessorView's gold eye and graduation cap logo on a maroon background"
-                  : "ASL detection running with hand landmarks and a predicted digit in the webcam feed"
-              }
-              fill
-              priority
-              sizes="(min-width: 1552px) 960px, (min-width: 1264px) calc(100vw - 592px), (min-width: 720px) 672px, (min-width: 481px) calc(100vw - 48px), calc(100vw - 36px)"
-            />
+        {project.videoUrl ? (
+          <figure className="project-hero-image project-hero-video">
+            <a
+              href={project.liveUrl ?? project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${project.title} in the Chrome Web Store`}
+            >
+              <video
+                src={project.videoUrl}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label={`${project.title} demo`}
+              />
+            </a>
           </figure>
+        ) : (
+          image && (
+            <figure
+              className={`project-hero-image ${slug === "asu-professorview" ? "project-hero-logo" : ""}`}
+            >
+              <Image
+                src={image}
+                alt={
+                  slug === "asu-professorview"
+                    ? "ASU ProfessorView's gold eye and graduation cap logo on a maroon background"
+                    : "ASL detection running with hand landmarks and a predicted digit in the webcam feed"
+                }
+                fill
+                priority
+                sizes="(min-width: 1552px) 960px, (min-width: 1264px) calc(100vw - 592px), (min-width: 720px) 672px, (min-width: 481px) calc(100vw - 48px), calc(100vw - 36px)"
+              />
+            </figure>
+          )
         )}
 
         <div className="project-body">

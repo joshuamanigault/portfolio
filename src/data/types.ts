@@ -9,6 +9,7 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   images: string[];
+  videoUrl?: string;
   category: ProjectCategory;
   dates: {
     started: string;
