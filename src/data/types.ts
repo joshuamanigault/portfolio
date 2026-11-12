@@ -29,6 +29,8 @@ export interface Experience {
 export interface SiteConfig {
   name: string;
   title: string;
+  /** Date of the latest content or design revision (YYYY-MM-DD). */
+  updatedAt: string;
   description: string;
   url: string;
   email: string;

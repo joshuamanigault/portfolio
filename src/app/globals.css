@@ -63,8 +63,8 @@
 /* Utility classes */
 @layer utilities {
   .container-main {
-    @apply mx-auto w-full px-6;
-    max-width: 720px;
+    @apply mx-auto w-full px-8;
+    max-width: 620px;
   }
 }
 
@@ -123,18 +123,23 @@
 /* Reference typography and open, image-led project layouts. */
 .site-header {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 24px;
-  padding-top: 28px;
+  padding-top: 64px;
   font: 300 16px/1.6 var(--font-sans);
 }
-.site-header nav {
-  display: flex;
-  gap: 22px;
-}
 .site-name {
-  letter-spacing: -0.02em;
+  display: inline-block;
+  font-size: 16.8px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+.site-updated {
+  margin-top: 2px;
+  color: var(--color-muted);
+  font-size: 14px;
 }
 .nav-link {
   position: relative;
@@ -259,19 +264,52 @@
   font: 300 13px/1.6 var(--font-sans);
 }
 .theme-toggle {
-  /* Reserve space for "light" and the initial "theme" label. */
-  inline-size: 5ch;
+  display: grid;
+  place-items: center;
+  inline-size: 44px;
+  block-size: 44px;
   flex-shrink: 0;
-  text-align: right;
-  font: inherit;
+  margin: -8px -12px 0 0;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
   background: none;
-  border: 0;
+  color: var(--color-muted);
+  font: inherit;
   cursor: pointer;
-  padding-inline: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 150ms ease-out, color 150ms ease-out;
+}
+.theme-toggle:disabled {
+  cursor: default;
+}
+.theme-icon {
+  grid-area: 1 / 1;
+}
+.theme-icon-sun,
+.dark .theme-icon-moon {
+  display: none;
+}
+.dark .theme-icon-sun {
+  display: block;
+}
+@media (hover: hover) {
+  .theme-toggle:enabled:hover {
+    background: var(--color-surface);
+    color: var(--color-foreground);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .theme-toggle {
+    transition: background-color 150ms ease-out, color 150ms ease-out, scale 150ms ease-out;
+  }
+  .theme-toggle:enabled:active {
+    scale: 0.96;
+  }
 }
 .projects-page,
 .project-detail-page {
-  margin-top: 96px;
+  margin-top: 48px;
 }
 .projects-page h1 {
   font-size: 16.8px;
@@ -480,11 +518,11 @@
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .home-page {
-  margin-top: 96px;
+  margin-top: 28px;
 }
 .home-section {
-  padding-top: 52px;
-  padding-bottom: 72px;
+  padding-top: 32px;
+  padding-bottom: 48px;
   border-top: 1px solid var(--color-border);
 }
 .home-intro {
@@ -584,22 +622,18 @@
 }
 @media (max-width: 480px) {
   .container-main {
-    padding-inline: 18px;
+    padding-inline: 24px;
   }
   .site-header {
-    padding-top: 20px;
+    padding-top: 32px;
   }
-  .site-header nav {
-    gap: 18px;
-  }
-  .home-page,
   .projects-page,
   .project-detail-page {
-    margin-top: 64px;
+    margin-top: 40px;
   }
   .home-section {
-    padding-top: 44px;
-    padding-bottom: 60px;
+    padding-top: 32px;
+    padding-bottom: 48px;
   }
   .project-entries {
     gap: 40px;

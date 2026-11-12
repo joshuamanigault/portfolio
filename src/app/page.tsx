@@ -7,7 +7,7 @@ import { projects } from "@/data/projects";
 export default async function HomePage() {
   return (
     <div className="container-main home-page">
-      <header className="mb-16">
+      <header className="mb-10">
         <div className="home-intro text-muted-foreground">
           <p>
             I&apos;m currently a junior studying Computer Science at Arizona State

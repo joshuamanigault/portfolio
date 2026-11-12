@@ -3,6 +3,7 @@ import type { SiteConfig } from "./types";
 export const siteConfig: SiteConfig = {
   name: "Joshua Manigault",
   title: "Joshua Manigault",
+  updatedAt: "2026-11-11",
   description:
     "Portfolio of Joshua Manigault, an aspiring Software Engineer with a passion for problem-solving and critical thinking.",
   url: "https://joshuamanigault.dev",

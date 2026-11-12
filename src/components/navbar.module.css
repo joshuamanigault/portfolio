@@ -1,9 +1,0 @@
-.header {
-  flex-wrap: wrap;
-  row-gap: 12px;
-}
-
-.navigation {
-  align-items: baseline;
-  margin-left: auto;
-}

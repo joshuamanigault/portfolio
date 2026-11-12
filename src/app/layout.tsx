@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import { Navbar } from "@/components/navbar";
+import { SiteHeader } from "@/components/site-header";
 import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/data/site";
@@ -86,7 +86,7 @@ export default function RootLayout({
         />
         <ThemeProvider>
           <div className="flex min-h-[100dvh] flex-col">
-            <Navbar />
+            <SiteHeader />
             <main id="main-content" className="flex-1">
               {children}
             </main>
