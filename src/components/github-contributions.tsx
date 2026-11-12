@@ -9,7 +9,9 @@ export function GitHubContributions({
 }: GitHubContributionsProps) {
   return (
     <section className="home-section" aria-label="GitHub contributions">
-      <h2 className="text-foreground mb-8 text-xl font-semibold">building</h2>
+      <h2 className="text-foreground mb-8 text-base font-medium tracking-[-0.01em]">
+        building
+      </h2>
       <GitHubContributionsChart username={username} />
     </section>
   );

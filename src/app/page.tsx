@@ -44,7 +44,10 @@ export default async function HomePage() {
         </div>
       </header>
       <section id="work" className="home-section" aria-labelledby="work-heading">
-        <h2 id="work-heading" className="text-foreground mb-8 text-xl font-semibold">
+        <h2
+          id="work-heading"
+          className="text-foreground mb-8 text-base font-medium tracking-[-0.01em]"
+        >
           work
         </h2>
         <Experience />

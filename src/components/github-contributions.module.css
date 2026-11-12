@@ -86,7 +86,7 @@
   border: 1px solid var(--color-border);
   background: var(--color-card);
   color: var(--color-foreground);
-  font: 12px/1.5 var(--font-mono);
+  font: 300 13px/1.6 var(--font-sans);
   pointer-events: none;
 }
 
