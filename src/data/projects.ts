@@ -19,6 +19,23 @@ export const projects: Project[] = [
     },
   },
   {
+    title: "Marrow",
+    slug: "marrow",
+    description:
+      "An interactive 3D learning workspace that turns real fossil CT scans into explorable specimens in the browser.",
+    highlight:
+      "Built at sunhacks — inspect named bones, switch Solid / X-ray / Exploded views, and pin observations on a real Yale Peabody specimen.",
+    techStack: ["React", "TypeScript", "Three.js", "Python", "FastAPI"],
+    githubUrl: "https://github.com/joshuamanigault/Marrow-Sunhacks",
+    images: ["/images/projects/marrow-demo.png"],
+    videoUrl: "/videos/marrow-demo.mp4",
+    category: "fullstack",
+    dates: {
+      started: "2026-11",
+      completed: "2026-11",
+    },
+  },
+  {
     title: "Real-Time ASL Detection",
     slug: "asl-detection",
     description:
@@ -47,6 +64,10 @@ export function getProjectSummary(project: Project) {
       tagline: "Professor reviews, right where you choose your classes.",
       metric: "2,100+ students",
     },
+    marrow: {
+      tagline: "Real fossil CT scans, explorable in 3D in the browser.",
+      metric: "sunhacks",
+    },
     "asl-detection": {
       tagline: "American Sign Language recognition through your webcam.",
       metric: "36 letters & digits",
@@ -74,6 +95,17 @@ export const projectStories: Record<string, ProjectStory> = {
     ],
     technology:
       "Built with TypeScript, JavaScript, HTML, and CSS, the extension integrates with ASU's existing catalog pages. It supports Chrome and Firefox and searches across ASU campuses, including Tempe, Polytechnic, and West.",
+  },
+  marrow: {
+    about:
+      "Paleontology learning usually means flat images or locked-down viewers. Marrow turns published fossil CT studies into an interactive 3D workspace in the browser, so you can inspect named bones, change how the specimen is visualized, and pin observations without inventing anatomy that is not in the scan.",
+    steps: [
+      "Open a curated specimen and load its animal, accession, institution, and citation in the workspace.",
+      "Rotate, select, hide, and focus named bones. Switch between Solid, X-ray, and Exploded views, then reset the camera and display.",
+      "Pin notes to bone-space points that survive explode and reset, and optionally ask grounded anatomy questions through a server-side Gemini panel.",
+    ],
+    technology:
+      "The frontend is React, TypeScript, Vite, and React Three Fiber / Three.js. The backend is Python FastAPI with prepared GLB assets and manifests. Optional MediaPipe hand control runs in the browser; Gemini answers stay server-side and cite prepared facts only.",
   },
   "asl-detection": {
     about:

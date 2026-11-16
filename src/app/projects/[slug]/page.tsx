@@ -63,7 +63,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               href={project.liveUrl ?? project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Open ${project.title} in the Chrome Web Store`}
+              aria-label={
+                project.liveUrl
+                  ? `Open ${project.title}`
+                  : `View ${project.title} on GitHub`
+              }
             >
               <ViewportVideo
                 src={project.videoUrl}

@@ -130,12 +130,16 @@ export function ProjectShowcase({ projects }: { projects: Project[] }) {
             >
               {project.videoUrl ? (
                 <a
-                  href={project.liveUrl ?? `/projects/${project.slug}`}
+                  href={project.liveUrl ?? project.githubUrl ?? `/projects/${project.slug}`}
                   className={styles.media}
                   data-project-media
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Open ${project.title} in the Chrome Web Store`}
+                  aria-label={
+                    project.liveUrl
+                      ? `Open ${project.title}`
+                      : `View ${project.title} on GitHub`
+                  }
                 >
                   <ViewportVideo
                     src={project.videoUrl}
