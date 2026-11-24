@@ -19,10 +19,10 @@ export const projects: Project[] = [
     },
   },
   {
-    title: "Marrow",
+    title: "Marrow (Sunhacks 9.0)",
     slug: "marrow",
     description:
-      "An interactive 3D learning workspace that turns real fossil CT scans into explorable specimens in the browser.",
+      "An interactive 3D learning workspace that turns real fossil CT scans into explorable specimens in the browser - built in 24 hours at Sunhacks 9.0.",
     highlight:
       "Built at sunhacks — inspect named bones, switch Solid / X-ray / Exploded views, and pin observations on a real Yale Peabody specimen.",
     techStack: ["React", "TypeScript", "Three.js", "Python", "FastAPI"],
